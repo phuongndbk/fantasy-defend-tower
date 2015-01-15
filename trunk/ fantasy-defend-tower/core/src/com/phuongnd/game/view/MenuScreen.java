@@ -37,10 +37,10 @@ public class MenuScreen extends BaseScreen {
 
 		if (Setting.soundEnabled) {
 			// Play music and sound
-			Assets.backgroundPlayMusic.play();
+			Assets.shared().backgroundPlayMusic.play();
 		} else {
 			// Pause music and sound
-			Assets.backgroundPlayMusic.pause();
+			Assets.shared().backgroundPlayMusic.pause();
 		}
 
 		// Button Event...

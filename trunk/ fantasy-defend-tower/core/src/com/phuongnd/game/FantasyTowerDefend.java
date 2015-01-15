@@ -18,8 +18,7 @@ public class FantasyTowerDefend extends Game {
 	@Override
 	public void create() {
 		manager = new ManagerScreen(this);
-		if (!Assets.isload)
-			Assets.load();
+		Assets.shared().load();
 		Setting.load();
 		FantasyTowerDefend.getManagerScreen().createScreen(
 				ManagerScreen.SCREEN_MENU);

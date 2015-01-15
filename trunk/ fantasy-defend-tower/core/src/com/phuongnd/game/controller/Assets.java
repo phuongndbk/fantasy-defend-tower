@@ -1,66 +1,123 @@
 package com.phuongnd.game.controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.BitmapFontLoader.BitmapFontParameter;
+import com.badlogic.gdx.assets.loaders.TextureLoader;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.assets.loaders.resolvers.ResolutionFileResolver;
+import com.badlogic.gdx.assets.loaders.resolvers.ResolutionFileResolver.Resolution;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
 
-	// Load 1 time...
-	public static boolean isload = false;
+	private static Assets _shared;
+
+	public static Assets shared() {
+		if (_shared == null) {
+			_shared = new Assets();
+		}
+		return _shared;
+	}
+
+	public AssetManager manager;
 
 	// Texture: Menu Screen, Button, etc...
 	public static TextureRegion backgroundMenu;
 
 	// Font
-	public static BitmapFont font;
+	public BitmapFont font;
 
 	// Animation
-	public static TextureRegion[] exampleTexture;
-	public static Animation exampleAnimation;
+	public TextureAtlas exampleAnimationAtlas;
+	public Animation exampleAnimation;
 
 	// Number
-	public static TextureAtlas numberAtlas;
-	public static TextureRegion num_empty;
-	public static TextureRegion num_0;
-	public static TextureRegion num_2;
-	public static TextureRegion num_4;
-	public static TextureRegion num_8;
-	public static TextureRegion num_16;
-	public static TextureRegion num_32;
-	public static TextureRegion num_64;
-	public static TextureRegion num_128;
-	public static TextureRegion num_256;
-	public static TextureRegion num_512;
+	public TextureAtlas numberAtlas;
+	public TextureRegion num_empty;
+	public TextureRegion num_0;
+	public TextureRegion num_2;
+	public TextureRegion num_4;
+	public TextureRegion num_8;
+	public TextureRegion num_16;
+	public TextureRegion num_32;
+	public TextureRegion num_64;
+	public TextureRegion num_128;
+	public TextureRegion num_256;
+	public TextureRegion num_512;
 
 	// Music and sound
-	public static Music backgroundPlayMusic;
-	public static Sound buttonClick;
+	public Music backgroundPlayMusic;
+	public Sound buttonClick;
 
-	public static void load() {
+	public Assets() {
+		Resolution resolution = new Resolution(800, 480, ".800x480");
+		ResolutionFileResolver resolver = new ResolutionFileResolver(
+				new InternalFileHandleResolver(), resolution);
+
+		manager = new AssetManager();
+		manager.setLoader(Texture.class, new TextureLoader(resolver));
+	}
+
+	public void load() {
 
 		/**********************************************************************************************/
+		manager.clear();
+
 		// Texture: Menu Screen, Button, etc...
 		backgroundMenu = loadTextureRegion("data/image/texture/backgroundMenu.png");
 
 		/**********************************************************************************************/
 		// Font
-		font = new BitmapFont(Gdx.files.internal("data/uiskin/arial.fnt"),
-				Gdx.files.internal("data/uiskin/arial.png"), false);
+		BitmapFontParameter font_parameter = new BitmapFontParameter();
+		font_parameter.magFilter = TextureFilter.Linear;
+		font_parameter.minFilter = TextureFilter.Linear;
+		manager.load(Constant.font_path, BitmapFont.class, font_parameter);
 
 		/**********************************************************************************************/
 		// Animation
-		exampleTexture = load_arrayTexture("data/image/animation/example", 8);
-		exampleAnimation = new Animation(0.1f, false, exampleTexture);
+		manager.load(Constant.example_animation_atlas_path, TextureAtlas.class);
 
 		/**********************************************************************************************/
 		// Number
-		numberAtlas = new TextureAtlas(
-				Gdx.files.internal("data/image/texture/number.txt"));
+		manager.load(Constant.number_atlas_path, TextureAtlas.class);
+
+		/**********************************************************************************************/
+		// Music and sound
+		// Music
+		manager.load(Constant.backgroundPlayMusic_path, Music.class);
+
+		/**********************************************************************************************/
+		// Sound
+		manager.load(Constant.buttonClick_path, Sound.class);
+
+		// make sure load asset 1 time only
+		manager.finishLoading();
+		getResource();
+
+		/**********************************************************************************************/
+	}
+
+	public void unLoad() {
+		manager.unload(Constant.font_path);
+		manager.unload(Constant.example_animation_atlas_path);
+		manager.unload(Constant.number_atlas_path);
+		manager.unload(Constant.backgroundPlayMusic_path);
+		manager.unload(Constant.buttonClick_path);
+	}
+
+	public void getResource() {
+		// Font
+		font = manager.get(Constant.font_path);
+
+		// Number atlas
+		numberAtlas = manager.get(Constant.number_atlas_path);
 		num_empty = numberAtlas.findRegion("empty");
 		num_0 = numberAtlas.findRegion("0");
 		num_2 = numberAtlas.findRegion("2");
@@ -73,63 +130,38 @@ public class Assets {
 		num_256 = numberAtlas.findRegion("256");
 		num_512 = numberAtlas.findRegion("512");
 
-		/**********************************************************************************************/
-		// Music and sound
-		// Music
-		backgroundPlayMusic = Gdx.audio.newMusic(Gdx.files
-				.internal("data/music/backgroundPlay.wav"));
+		// Animation
+		exampleAnimationAtlas = manager
+				.get(Constant.example_animation_atlas_path);
+		exampleAnimation = load_Animation(exampleAnimationAtlas, 8, false, 0.1f);
+
+		// Music and Sound
+		backgroundPlayMusic = manager.get(Constant.backgroundPlayMusic_path);
 		backgroundPlayMusic.setLooping(true);
 
-		/**********************************************************************************************/
-		// Sound
-		buttonClick = Gdx.audio.newSound(Gdx.files
-				.internal("data/music/buttonClick.wav"));
-
-		// make sure load asset 1 time only
-		isload = true;
-
-		/**********************************************************************************************/
+		buttonClick = manager.get(Constant.buttonClick_path);
 	}
 
 	// Load texture
-	public static Texture loadTexture(String file) {
+	public Texture loadTexture(String file) {
 		return new Texture(Gdx.files.internal(file));
 	}
 
 	// Load texture region
-	public static TextureRegion loadTextureRegion(String path) {
+	public TextureRegion loadTextureRegion(String path) {
 		// Texture.setEnforcePotImages(false);
 		return new TextureRegion(new Texture(Gdx.files.internal(path)));
 	}
 
 	// Load animation from file
-	public static TextureRegion[] load_arrayTexture(String str, int count) {
+	public Animation load_Animation(TextureAtlas atlas, int count,
+			boolean flip, float time) {
 		TextureRegion[] arrayTextureRegion = new TextureRegion[count];
 		for (int i = 0; i < count; i++) {
-			arrayTextureRegion[i] = loadTextureRegion(str + "/" + (i + 1)
-					+ ".png");
+			arrayTextureRegion[i] = atlas.findRegion("" + i + 1);
 		}
-		return arrayTextureRegion;
-	}
-
-	public static TextureRegion[] loadArrayTexture(int col, int row,
-			String direction) {
-		TextureRegion[] textureRegion;
-
-		Texture texture_ball = new Texture(Gdx.files.internal(direction));
-		TextureRegion[][] tmp = TextureRegion.split(texture_ball,
-				texture_ball.getWidth() / col, texture_ball.getHeight() / row);
-		textureRegion = new TextureRegion[col * row];
-
-		int index = 0;
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {
-				textureRegion[index++] = tmp[i][j];
-			}
-		}
-
-		return textureRegion;
-
+		Animation ani = new Animation(time, flip, arrayTextureRegion);
+		return ani;
 	}
 
 	// Play Sound
