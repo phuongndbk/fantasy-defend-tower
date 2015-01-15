@@ -35,10 +35,10 @@ public class PlayScreen extends BaseScreen {
 		// Play Music and Sound
 		if (Setting.soundEnabled) {
 			// Play music and sound
-			Assets.backgroundPlayMusic.play();
+			Assets.shared().backgroundPlayMusic.play();
 		} else {
 			// Pause music and sound
-			Assets.backgroundPlayMusic.pause();
+			Assets.shared().backgroundPlayMusic.pause();
 		}
 
 		// Constructor for button, etc...
@@ -219,7 +219,7 @@ public class PlayScreen extends BaseScreen {
 	// Draw Game Ready
 	private void presentReady() {
 		// TODO Auto-generated method stub
-		Assets.font.draw(batch, "READY", 800 / 2 - 40, 480 / 2 + 25);
+		Assets.shared().font.draw(batch, "READY", 800 / 2 - 40, 480 / 2 + 25);
 	}
 
 	// Draw Game Running
@@ -229,27 +229,28 @@ public class PlayScreen extends BaseScreen {
 		// Used memory
 		long freeMemory = Runtime.getRuntime().maxMemory()
 				- Runtime.getRuntime().freeMemory();
-		Assets.font.draw(batch, String.valueOf(freeMemory), 800 / 2 - 50,
-				0 / 2 + 25);
+		Assets.shared().font.draw(batch, String.valueOf(freeMemory),
+				800 / 2 - 50, 0 / 2 + 25);
 	}
 
 	// Draw Game Pause
 	private void presentPaused() {
 		// TODO Auto-generated method stub
-		Assets.font.draw(batch, "PAUSE", 800 / 2 - 40, 480 / 2 + 25);
+		Assets.shared().font.draw(batch, "PAUSE", 800 / 2 - 40, 480 / 2 + 25);
 	}
 
 	// Draw Game Level End
 	private void presentLevelEnd() {
 		// TODO Auto-generated method stub
-		Assets.font.draw(batch, "LEVEL COMPLETED...", 800 / 2 - 100,
+		Assets.shared().font.draw(batch, "LEVEL COMPLETED...", 800 / 2 - 100,
 				480 / 2 + 25);
 	}
 
 	// Draw Game Over
 	private void presentGameOver() {
 		// TODO Auto-generated method stub
-		Assets.font.draw(batch, "GAME OVER", 800 / 2 - 70, 480 / 2 + 25);
+		Assets.shared().font.draw(batch, "GAME OVER", 800 / 2 - 70,
+				480 / 2 + 25);
 	}
 
 	@Override
