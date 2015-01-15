@@ -1,0 +1,61 @@
+
+example.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+3
+  rotate: false
+  xy: 1, 121
+  size: 95, 125
+  orig: 95, 125
+  offset: 0, 0
+  index: -1
+4
+  rotate: false
+  xy: 98, 155
+  size: 115, 91
+  orig: 115, 91
+  offset: 0, 0
+  index: -1
+5
+  rotate: false
+  xy: 215, 168
+  size: 128, 78
+  orig: 128, 78
+  offset: 0, 0
+  index: -1
+8
+  rotate: false
+  xy: 345, 179
+  size: 132, 67
+  orig: 132, 67
+  offset: 0, 0
+  index: -1
+1
+  rotate: false
+  xy: 1, 1
+  size: 77, 118
+  orig: 77, 118
+  offset: 0, 0
+  index: -1
+6
+  rotate: false
+  xy: 98, 66
+  size: 118, 87
+  orig: 118, 87
+  offset: 0, 0
+  index: -1
+7
+  rotate: false
+  xy: 218, 56
+  size: 77, 110
+  orig: 77, 110
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 297, 35
+  size: 65, 131
+  orig: 65, 131
+  offset: 0, 0
+  index: -1
