@@ -32,7 +32,7 @@ public class MenuScreen extends BaseScreen {
 		super.show();
 
 		// Constructor
-		imgBack = new Image(Assets.backgroundMenu);
+		imgBack = new Image(Assets.shared().backgroundMenu);
 		stage.addActor(imgBack);
 
 		if (Setting.soundEnabled) {
@@ -50,7 +50,7 @@ public class MenuScreen extends BaseScreen {
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				FantasyTowerDefend.getManagerScreen().createScreen(
-						ManagerScreen.SCREEN_PLAY);
+						ManagerScreen.SCREEN_SELECT_SLOT);
 				return super.touchDown(event, x, y, pointer, button);
 			}
 		});

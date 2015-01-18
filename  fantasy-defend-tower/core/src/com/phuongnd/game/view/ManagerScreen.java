@@ -8,11 +8,12 @@ public class ManagerScreen {
 	// Screen Definition
 	public static int SCREEN_MENU = 0;
 	public static int SCREEN_PLAY = 1;
-	//public static int SCREEN_SPLASH = -1;
+	public static int SCREEN_SELECT_SLOT = 2;
+	// public static int SCREEN_SPLASH = -1;
 
 	public final FantasyTowerDefend game;
 	private Screen nowScreen;
-	
+
 	public ManagerScreen(FantasyTowerDefend game) {
 		// TODO Auto-generated constructor stub
 		this.game = game;
@@ -43,6 +44,11 @@ public class ManagerScreen {
 		case 1:
 			clearNowScreen();
 			nowScreen = new PlayScreen(game);
+			nowScreen.show();
+			return nowScreen;
+		case 2:
+			clearNowScreen();
+			nowScreen = new SelectScreen(game);
 			nowScreen.show();
 			return nowScreen;
 		}
