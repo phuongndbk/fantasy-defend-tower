@@ -70,6 +70,7 @@ public class BaseScreen implements Screen {
 	public void dispose() {
 		batch.dispose();
 		stage.dispose();
+		game.dispose();
 	}
 
 }

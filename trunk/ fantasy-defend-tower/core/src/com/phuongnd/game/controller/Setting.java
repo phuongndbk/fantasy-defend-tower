@@ -17,12 +17,20 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Setting {
 	public static boolean soundEnabled = true;
+	public static boolean musicEnabled = true;
+	public static boolean slot1DataSaved = false;
+	public static boolean slot2DataSaved = false;
+	public static boolean slot3DataSaved = false;
+
 	public final static String[] names = new String[] { "Phuong", "Nguyen",
 			"Duy", "Bach", "Khoa" };
 	public final static int[] scores = new int[] { 1000, 800, 600, 400, 200 };
-	public final static String file = ".basegame";
+	public final static String file = ".fantasyTowerDefend";
 
 	// Saving Information
+	public static SaveData[] saveDatas = new SaveData[] {
+			new SaveData("slot1"), new SaveData("slot2"), new SaveData("slot3") };
+	public static int slotSelected = 0;
 
 	// etc...
 	public static Skin skin = new Skin(
@@ -78,6 +86,10 @@ public class Setting {
 			in = new BufferedReader(new InputStreamReader(Gdx.files.external(
 					file).read()));
 			soundEnabled = Boolean.parseBoolean(in.readLine());
+			musicEnabled = Boolean.parseBoolean(in.readLine());
+			slot1DataSaved = Boolean.parseBoolean(in.readLine());
+			slot2DataSaved = Boolean.parseBoolean(in.readLine());
+			slot3DataSaved = Boolean.parseBoolean(in.readLine());
 			for (int i = 0; i < 5; i++) {
 				names[i] = in.readLine();
 				scores[i] = Integer.parseInt(in.readLine());
@@ -100,6 +112,10 @@ public class Setting {
 			out = new BufferedWriter(new OutputStreamWriter(Gdx.files.external(
 					file).write(false)));
 			out.write(Boolean.toString(soundEnabled));
+			out.write(Boolean.toString(musicEnabled));
+			out.write(Boolean.toString(slot1DataSaved));
+			out.write(Boolean.toString(slot2DataSaved));
+			out.write(Boolean.toString(slot3DataSaved));
 			for (int i = 0; i < 5; i++) {
 				out.write(names[i]);
 				out.write(Integer.toString(scores[i]));

@@ -11,13 +11,14 @@ public class Animation {
 	public static final int ANIMATION_LOOPING = 0;
 	public static final int ANIMATION_NONLOOPING = 1;
 
-	final TextureRegion[] keyFrames;
-	final float frameDuration;
+	public final TextureRegion[] keyFrames;
+	public final float frameDuration;
 
-	public Animation(float frameDuration, boolean flip, TextureRegion... keyFrames) {
+	public Animation(float frameDuration, boolean flip,
+			TextureRegion... keyFrames) {
 		this.frameDuration = frameDuration;
 		this.keyFrames = keyFrames;
-		if(flip) {
+		if (flip) {
 			for (int i = 0; i < this.keyFrames.length; i++) {
 				this.keyFrames[i].flip(true, false);
 			}
