@@ -1,0 +1,46 @@
+background.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background_level
+  rotate: false
+  xy: 2, 2
+  size: 600, 374
+  orig: 600, 374
+  offset: 0, 0
+  index: -1
+background_tower
+  rotate: false
+  xy: 604, 2
+  size: 600, 198
+  orig: 600, 198
+  offset: 0, 0
+  index: -1
+level
+  rotate: false
+  xy: 1206, 2
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+slot
+  rotate: false
+  xy: 1320, 2
+  size: 200, 250
+  orig: 200, 250
+  offset: 0, 0
+  index: -1
+star_empty
+  rotate: false
+  xy: 1522, 2
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+star_full
+  rotate: false
+  xy: 1574, 2
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
