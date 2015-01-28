@@ -15,11 +15,27 @@ public class Enemy extends BaseUnit {
 	private int life_cost;
 	private float distance;
 	private float time_to_attack;
+	private float time_to_teleport;
+	private float time_to_hex;
+	private float time_to_vampire;
+	private float time_to_heath;
+	private float time_to_speedup;
+	private float time_speedup;
 
+	private int originalDamage;
+	private int originalSpeed;
+	private int originalHP;
+	private int path = 1;
 	private int index = 0;
 	private float time_extra = 0;
-	private ArrayList<Vector2> paths;
+	private ArrayList<Piece> paths;
 	private Vector2 destination;
+
+	private Skill skills;
+
+	private boolean isVampire;
+	private boolean isStop;
+	private boolean isSpeedUp;
 
 	@Override
 	public void init(int id, Vector2 position, int numAnimation) {
@@ -27,16 +43,18 @@ public class Enemy extends BaseUnit {
 
 	}
 
-	public void init(int id, Vector2 position, int numAnimation, int start) {
+	public void init(int id, Vector2 position, int numAnimation, int start,
+			int path) {
 		// TODO Auto-generated method stub
 		setId(id);
 		setPosition(position);
 		setNUM_ANIMATION(numAnimation);
 		setAnimation(new Animation[numAnimation]);
 		setState(STATE.ACTIVE);
-		paths = new ArrayList<Vector2>();
+		paths = new ArrayList<Piece>();
 		destination = new Vector2();
 		index = start;
+		this.path = path;
 
 		switch (getId()) {
 		case 1:
@@ -51,10 +69,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_1_SKILL);
 			setAttack_speed(Constant.ENEMY_1_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_1_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+			setSkills(new Skill(Constant.SKILL_8_ID));
 			break;
 		case 2:
 			setName(Constant.ENEMY_2_NAME);
@@ -68,10 +83,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_2_SKILL);
 			setAttack_speed(Constant.ENEMY_2_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_2_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+			setSkills(new Skill(Constant.SKILL_8_ID));
 			break;
 		case 3:
 			setName(Constant.ENEMY_3_NAME);
@@ -85,10 +97,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_3_SKILL);
 			setAttack_speed(Constant.ENEMY_3_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_3_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+			setSkills(new Skill(Constant.SKILL_8_ID));
 			break;
 		case 4:
 			setName(Constant.ENEMY_4_NAME);
@@ -102,10 +111,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_4_SKILL);
 			setAttack_speed(Constant.ENEMY_4_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_4_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+			setSkills(new Skill(Constant.SKILL_9_ID));
 			break;
 		case 5:
 			setName(Constant.ENEMY_5_NAME);
@@ -119,10 +125,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_5_SKILL);
 			setAttack_speed(Constant.ENEMY_5_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_5_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 6:
 			setName(Constant.ENEMY_6_NAME);
@@ -136,10 +138,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_6_SKILL);
 			setAttack_speed(Constant.ENEMY_6_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_6_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 7:
 			setName(Constant.ENEMY_7_NAME);
@@ -153,10 +151,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_7_SKILL);
 			setAttack_speed(Constant.ENEMY_7_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_7_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 8:
 			setName(Constant.ENEMY_8_NAME);
@@ -170,10 +164,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_8_SKILL);
 			setAttack_speed(Constant.ENEMY_8_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_8_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 9:
 			setName(Constant.ENEMY_9_NAME);
@@ -187,10 +177,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_9_SKILL);
 			setAttack_speed(Constant.ENEMY_9_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_9_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 10:
 			setName(Constant.ENEMY_10_NAME);
@@ -204,10 +190,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_10_SKILL);
 			setAttack_speed(Constant.ENEMY_10_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_10_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 11:
 			setName(Constant.ENEMY_11_NAME);
@@ -221,10 +203,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_11_SKILL);
 			setAttack_speed(Constant.ENEMY_11_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_11_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 12:
 			setName(Constant.ENEMY_12_NAME);
@@ -238,10 +216,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_12_SKILL);
 			setAttack_speed(Constant.ENEMY_12_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_12_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 13:
 			setName(Constant.ENEMY_13_NAME);
@@ -255,10 +229,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_13_SKILL);
 			setAttack_speed(Constant.ENEMY_13_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_13_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 14:
 			setName(Constant.ENEMY_14_NAME);
@@ -272,10 +242,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_14_SKILL);
 			setAttack_speed(Constant.ENEMY_14_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_14_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 15:
 			setName(Constant.ENEMY_15_NAME);
@@ -289,10 +255,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_15_SKILL);
 			setAttack_speed(Constant.ENEMY_15_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_15_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 16:
 			setName(Constant.ENEMY_16_NAME);
@@ -306,10 +268,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_16_SKILL);
 			setAttack_speed(Constant.ENEMY_16_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_16_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 17:
 			setName(Constant.ENEMY_17_NAME);
@@ -323,10 +281,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_17_SKILL);
 			setAttack_speed(Constant.ENEMY_17_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_17_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 18:
 			setName(Constant.ENEMY_18_NAME);
@@ -340,10 +294,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_18_SKILL);
 			setAttack_speed(Constant.ENEMY_18_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_18_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 19:
 			setName(Constant.ENEMY_19_NAME);
@@ -357,10 +307,6 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_19_SKILL);
 			setAttack_speed(Constant.ENEMY_19_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_19_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 		case 20:
 			setName(Constant.ENEMY_20_NAME);
@@ -374,15 +320,16 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_20_SKILL);
 			setAttack_speed(Constant.ENEMY_20_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_20_LIFE_COST);
-			setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-			setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-			setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-			setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 			break;
 
 		default:
 			break;
 		}
+
+		initAnimation(false);
+		originalDamage = getDamage();
+		originalSpeed = getSpeed();
+		originalHP = getHp();
 
 		setBounder(new Rectangle(getPosition().x, getPosition().y,
 				getAnimation()[0].keyFrames[0].getRegionWidth() - 10,
@@ -390,24 +337,307 @@ public class Enemy extends BaseUnit {
 		setMove_state(MOVE_STATE.RIGHT);
 	}
 
-	@Override
-	public void update(float delta) {
-		// TODO Auto-generated method stub
-		if (getState() == STATE.ACTIVE)
-			move(delta);
+	public void initAnimation(boolean isVampire) {
+		if (!isVampire) {
+			switch (getId()) {
+			case 1:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 2:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 3:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 4:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 5:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 6:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 7:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 8:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 9:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 10:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 11:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 12:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 13:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 14:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 15:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 16:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 17:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 18:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 19:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+			case 20:
+				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				break;
+
+			default:
+				break;
+			}
+		} else {
+			switch (getId()) {
+			case 1:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 2:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 3:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 4:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 5:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 6:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 7:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 8:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 9:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 10:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 11:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 12:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 13:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 14:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 15:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 16:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 17:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 18:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 19:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+			case 20:
+				setAnimation(Assets.shared().hero4_Animation_Up, 0);
+				setAnimation(Assets.shared().hero4_Animation_Down, 1);
+				setAnimation(Assets.shared().hero4_Animation_Left, 2);
+				setAnimation(Assets.shared().hero4_Animation_Right, 3);
+				break;
+
+			default:
+				break;
+			}
+		}
 	}
 
 	@Override
-	public void attack(BaseUnit unit, float delta) {
+	public void update(float delta) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void update(World world, float delta) {
+		// TODO Auto-generated method stub
 		time_to_attack += delta;
+		if (getState() == STATE.ACTIVE) {
+			move(world, delta);
+		}
+		activateSkill(world, delta);
+		checkSkillAffect(world, delta);
+
+		if (!checkCollision(world, delta)) {
+			if (getState() != STATE.DEAD) {
+				setState(STATE.ACTIVE);
+			}
+		}
+	}
+
+	@Override
+	public void attack(BaseUnit unit) {
 		if (time_to_attack >= getAttack_speed()) {
 			int damage = getDamage() - unit.getArmor();
-			unit.setHp(unit.getHp() - damage);
+			if (damage > 0)
+				unit.setHp(unit.getHp() - damage);
 			time_to_attack = 0;
 		}
 
-		if (unit.getHp() <= 0)
+		if (unit.getHp() <= 0) {
+			unit.setHp(0);
 			unit.setState(STATE.DEAD);
+		}
+	}
+
+	public void attack(BaseUnit unit, World world) {
+		if (time_to_attack >= getAttack_speed()) {
+			if (getDamage() > 0) {
+				world.addNewBullet(2, new Vector2(getPosition().x,
+						getPosition().y), 4, unit);
+			}
+			time_to_attack = 0;
+		}
 	}
 
 	public boolean checkCollision(World world, float delta) {
@@ -421,93 +651,227 @@ public class Enemy extends BaseUnit {
 							.get(i).getRange() * Constant.MAP_UNIT_SIZE_WIDTH);
 			if (result.contains("inside")) {
 				if (result.equals("1 inside") || result.equals("all inside")) {
-					world.activeTower.get(i).attack(this, delta);
+					// world.activeTower.get(i).attack(this, world, delta);
+					world.activeTower.get(i).produceWarrior(world, delta);
 				}
 			}
 		}
 
-		// Check colision with warrior
-		if (getRange() > 0) {
-			for (int i = 0; i < world.activeWarrior.size; i++) {
-				String result = world.checkOverlapRadar(getPosition(),
-						world.activeWarrior.get(i).getPosition(), getRange()
-								* Constant.MAP_UNIT_SIZE_WIDTH,
-						world.activeWarrior.get(i).getRange()
-								* Constant.MAP_UNIT_SIZE_WIDTH);
-				if (result.contains("inside")) {
-					if (result.equals("2 inside")) {
-						if (getState() != STATE.DEAD) {
-							setState(STATE.IDLE);
-							attack(world.activeWarrior.get(i), delta);
+		if (isVampire) {
+			// attack enemy
+			if (getRange() > 0) {
+				for (int i = 0; i < world.activeEnemy.size; i++) {
+					if (!world.activeEnemy.get(i).equals(this)) {
+						String result = world.checkOverlapRadar(getPosition(),
+								world.activeEnemy.get(i).getPosition(),
+								getRange() * Constant.MAP_UNIT_SIZE_WIDTH,
+								world.activeEnemy.get(i).getRange()
+										* Constant.MAP_UNIT_SIZE_WIDTH);
+						if (result.contains("inside")) {
+							if (result.equals("2 inside")) {
+								if (getState() != STATE.DEAD) {
+									setState(STATE.IDLE);
+									attack(world.activeEnemy.get(i), world);
+								}
+							} else if (result.equals("1 inside")) {
+								if (world.activeEnemy.get(i).getState() != STATE.DEAD) {
+									world.activeEnemy.get(i).setState(
+											STATE.IDLE);
+									world.activeEnemy.get(i)
+											.attack(this, world);
+								}
+							} else {
+								if (getState() != STATE.DEAD) {
+									setState(STATE.IDLE);
+									attack(world.activeEnemy.get(i), world);
+								}
+								if (world.activeEnemy.get(i).getState() != STATE.DEAD) {
+									world.activeEnemy.get(i).setState(
+											STATE.IDLE);
+									world.activeEnemy.get(i)
+											.attack(this, world);
+								}
+							}
+							kq = true;
+							// break;
+						} else {
+
+							// continue;
 						}
-					} else if (result.equals("1 inside")) {
-						if (world.activeWarrior.get(i).getState() != STATE.DEAD) {
-							world.activeWarrior.get(i).setState(STATE.IDLE);
-							world.activeWarrior.get(i).attack(this, delta);
-						}
-					} else {
-						if (world.activeWarrior.get(i).getState() != STATE.DEAD) {
-							setState(STATE.IDLE);
-							attack(world.activeWarrior.get(i), delta);
-						}
-						if (world.activeWarrior.get(i).getState() != STATE.DEAD) {
-							world.activeWarrior.get(i).setState(STATE.IDLE);
-							world.activeWarrior.get(i).attack(this, delta);
+						if (world.activeEnemy.get(i).getRange() == 0) {
+							if (getBounder().overlaps(
+									world.activeEnemy.get(i).getBounder())) {
+								if (world.activeEnemy.get(i).getState() != STATE.DEAD) {
+									world.activeEnemy.get(i).setState(
+											STATE.IDLE);
+									world.activeEnemy.get(i).attack(this);
+								}
+							}
 						}
 					}
-					kq = true;
-					// break;
-				} else {
-					// continue;
+				}
+			} else {
+				for (Enemy enemy : world.activeEnemy) {
+					if (!enemy.equals(this)) {
+						float dx = enemy.getPosition().x - getPosition().x;
+						float dy = enemy.getPosition().y - getPosition().y;
+						float distance = (float) Math.sqrt(Math.pow(dx, 2)
+								+ Math.pow(dy, 2));
+						if (distance <= enemy.getRange()
+								* Constant.MAP_UNIT_SIZE_WIDTH) {
+							if (enemy.getState() != STATE.DEAD) {
+								enemy.setState(STATE.IDLE);
+								enemy.attack(this, world);
+							}
+						}
+						if (getBounder().overlaps(enemy.getBounder())) {
+							if (getState() != STATE.DEAD) {
+								setState(STATE.IDLE);
+								attack(enemy);
+							}
+							if (enemy.getRange() == 0) {
+								if (enemy.getState() != STATE.DEAD) {
+									enemy.setState(STATE.IDLE);
+									enemy.attack(this);
+								}
+							}
+							kq = true;
+							// break;
+						} else {
+							// continue;
+						}
+					}
 				}
 			}
 		} else {
-			for (Warrior warrior : world.activeWarrior) {
-				float dx = warrior.getPosition().x - getPosition().x;
-				float dy = warrior.getPosition().y - getPosition().y;
-				float distance = (float) Math.sqrt(Math.pow(dx, 2)
-						+ Math.pow(dy, 2));
-				if (distance <= warrior.getRange()
-						* Constant.MAP_UNIT_SIZE_WIDTH) {
-					if (warrior.getState() != STATE.DEAD) {
-						warrior.setState(STATE.IDLE);
-						warrior.attack(this, delta);
+			// Check colision with warrior
+			if (getRange() > 0) {
+				for (int i = 0; i < world.activeWarrior.size; i++) {
+					String result = world.checkOverlapRadar(getPosition(),
+							world.activeWarrior.get(i).getPosition(),
+							getRange() * Constant.MAP_UNIT_SIZE_WIDTH,
+							world.activeWarrior.get(i).getRange()
+									* Constant.MAP_UNIT_SIZE_WIDTH);
+					if (result.contains("inside")) {
+						if (result.equals("2 inside")) {
+							if (getState() != STATE.DEAD) {
+								setState(STATE.IDLE);
+								attack(world.activeWarrior.get(i), world);
+							}
+						} else if (result.equals("1 inside")) {
+							if (world.activeWarrior.get(i).getState() != STATE.DEAD) {
+								world.activeWarrior.get(i).setState(STATE.IDLE);
+								world.activeWarrior.get(i).attack(this, world);
+							}
+						} else {
+							if (getState() != STATE.DEAD) {
+								setState(STATE.IDLE);
+								attack(world.activeWarrior.get(i), world);
+							}
+							if (world.activeWarrior.get(i).getState() != STATE.DEAD) {
+								world.activeWarrior.get(i).setState(STATE.IDLE);
+								world.activeWarrior.get(i).attack(this, world);
+							}
+						}
+						kq = true;
+						// break;
+					} else {
+
+						// continue;
+					}
+					if (world.activeWarrior.get(i).getRange() == 0) {
+						if (getBounder().overlaps(
+								world.activeWarrior.get(i).getBounder())) {
+							if (world.activeWarrior.get(i).getState() != STATE.DEAD) {
+								world.activeWarrior.get(i).setState(STATE.IDLE);
+								world.activeWarrior.get(i).attack(this);
+							}
+						}
 					}
 				}
-				if (getBounder().overlaps(warrior.getBounder())) {
-					if (getState() != STATE.DEAD) {
-						setState(STATE.IDLE);
-						attack(warrior, delta);
+			} else {
+				for (Warrior warrior : world.activeWarrior) {
+					float dx = warrior.getPosition().x - getPosition().x;
+					float dy = warrior.getPosition().y - getPosition().y;
+					float distance = (float) Math.sqrt(Math.pow(dx, 2)
+							+ Math.pow(dy, 2));
+					if (distance <= warrior.getRange()
+							* Constant.MAP_UNIT_SIZE_WIDTH) {
+						if (warrior.getState() != STATE.DEAD) {
+							warrior.setState(STATE.IDLE);
+							warrior.attack(this, world);
+						}
 					}
-					kq = true;
-					// break;
-				} else {
-					if (warrior.getState() != STATE.DEAD) {
-						warrior.setState(STATE.ACTIVE);
+					if (getBounder().overlaps(warrior.getBounder())) {
+						if (getState() != STATE.DEAD) {
+							setState(STATE.IDLE);
+							attack(warrior);
+						}
+						if (warrior.getRange() == 0) {
+							if (warrior.getState() != STATE.DEAD) {
+								warrior.setState(STATE.IDLE);
+								warrior.attack(this);
+							}
+						}
+						kq = true;
+						// break;
+					} else {
+						// continue;
 					}
-					// continue;
 				}
 			}
 		}
+
 		return kq;
 	}
 
-	public void move(float delta) {
+	public void move(World world, float delta) {
 		// for (int i = 0; i < paths.size(); i++) {
 		// System.out.println(paths.get(i).x + " - " + paths.get(i).y);
 		// }
 		// System.out.println("------------");
-		if (index < paths.size() - 1) {
-			destination = paths.get(index + 1);
-			if (!check(Ulti.convertPositionWorld(destination))) {
-				moveTo();
+		if (!isVampire) {
+			if (isStop)
+				setSpeed(0);
+			else {
+				if (!isSpeedUp)
+					setSpeed(originalSpeed);
+				else {
+					time_speedup += delta;
+					setSpeed(originalSpeed * 2);
+					if (time_speedup >= 3f) {
+						isSpeedUp = false;
+						time_speedup = 0;
+					}
+				}
+			}
+			if (index < paths.size() - 1) {
+				destination = paths.get(index + 1).getPosition();
+				if (!check(Ulti.convertPositionWorld(destination))) {
+					moveTo();
+				} else {
+					index++;
+				}
 			} else {
-				index++;
+				time_extra += delta;
+				if (time_extra >= 5 * 10 / originalSpeed) {
+					world.life -= getLife_cost();
+					setState(STATE.DEAD);
+				}
 			}
 		} else {
-			time_extra += delta;
-			if (time_extra >= 0.5f)
-				setState(STATE.DEAD);
+			if (index > 0) {
+				destination = paths.get(index - 1).getPosition();
+				if (!check(Ulti.convertPositionWorld(destination))) {
+					moveTo();
+				} else {
+					index--;
+				}
+			} else {
+				// time_extra += delta;
+				// if (time_extra >= 5 * 10 / getSpeed())
+				setSpeed(0);
+			}
 		}
 
 		switch (getMove_state()) {
@@ -547,6 +911,149 @@ public class Enemy extends BaseUnit {
 		setDistance(getDistance() + getSpeed() * delta);
 	}
 
+	public void activateSkill(World world, float delta) {
+		time_to_heath += delta;
+		time_to_speedup += delta;
+		if (skills != null) {
+			switch (skills.getId()) {
+			// Health
+			case Constant.SKILL_7_ID:
+				if (!isVampire) {
+					if (time_to_heath >= 4f) {
+						if (time_to_heath <= 6f) {
+							isStop = true;
+						} else {
+							for (Enemy enemy : world.activeEnemy) {
+								if (!enemy.equals(this)
+										&& enemy.getId() != this.getId()) {
+									if (enemy.getState() != STATE.DEAD) {
+										String result = world
+												.checkOverlapRadar(
+														this.getPosition(),
+														enemy.getPosition(),
+														this.getRange()
+																* Constant.MAP_UNIT_SIZE_WIDTH,
+														enemy.getRange()
+																* Constant.MAP_UNIT_SIZE_WIDTH);
+										if (result.equals("2 inside")
+												|| result.equals("all inside")) {
+											if (!enemy.isVampire) {
+												if (enemy.getHp() < enemy.originalHP)
+													enemy.setHp(enemy.getHp() + 5);
+												if (enemy.getHp() > enemy.originalHP)
+													enemy.setHp(originalHP);
+											}
+										}
+									}
+								}
+							}
+							time_to_heath = 0;
+							isStop = false;
+						}
+					}
+				}
+				break;
+			// Speed up
+			case Constant.SKILL_8_ID:
+				if (!isVampire) {
+					if (time_to_speedup >= 4f) {
+						if (time_to_speedup <= 5f) {
+							isStop = true;
+							for (Enemy enemy : world.activeEnemy) {
+								if (!enemy.equals(this)
+										&& enemy.getId() != this.getId()) {
+									if (enemy.getState() != STATE.DEAD) {
+										String result = world
+												.checkOverlapRadar(
+														this.getPosition(),
+														enemy.getPosition(),
+														this.getRange()
+																* Constant.MAP_UNIT_SIZE_WIDTH,
+														enemy.getRange()
+																* Constant.MAP_UNIT_SIZE_WIDTH);
+										if (result.equals("2 inside")
+												|| result.equals("all inside")) {
+											if (!enemy.isVampire) {
+												enemy.isSpeedUp = true;
+											}
+										}
+									}
+								}
+							}
+						} else {
+							time_to_speedup = 0;
+							isStop = false;
+						}
+					}
+				}
+				break;
+			// Carry out
+			case Constant.SKILL_9_ID:
+
+				break;
+
+			default:
+				break;
+			}
+		}
+	}
+
+	public void checkSkillAffect(World world, float delta) {
+		switch (getSkill_affected()) {
+		case NORMAL:
+			break;
+		case NINJA:
+
+			break;
+		case TELEPORT:
+			time_to_teleport += delta;
+			if (time_to_teleport > 1f) {
+				time_to_teleport = 0;
+				index = 0;
+				setPosition(Ulti.convertPositionWorld(getPaths().get(0)
+						.getPosition()));
+				setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
+			}
+			break;
+		case HEX:
+			time_to_hex += delta;
+			if (time_to_hex >= 2f) {
+				if (time_to_hex <= 5f) {
+					setDamage(0);
+				} else {
+					setDamage(originalDamage);
+					time_to_hex = 0;
+					setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
+				}
+			}
+			break;
+		case BITE:
+			time_to_vampire += delta;
+			if (time_to_vampire >= 2f) {
+				if (time_to_vampire <= 10f) {
+					if (!isVampire) {
+						setPosition(Ulti.convertPositionWorld(paths.get(index)
+								.getPosition()));
+						initAnimation(true);
+						isVampire = true;
+					}
+				} else {
+					isVampire = false;
+					initAnimation(false);
+					time_to_vampire = 0;
+					setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
+				}
+			}
+			break;
+		case MOON:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+
 	private boolean check(Vector2 destination) {
 		// TODO Auto-generated method stub
 		boolean kq = false;
@@ -560,8 +1067,14 @@ public class Enemy extends BaseUnit {
 	}
 
 	public void moveTo() {
-		Vector2 start = Ulti.convertPositionWorld(paths.get(index));
-		Vector2 end = Ulti.convertPositionWorld(paths.get(index + 1));
+		Vector2 start = new Vector2(), end = new Vector2();
+		if (!isVampire) {
+			start = Ulti.convertPositionWorld(paths.get(index).getPosition());
+			end = Ulti.convertPositionWorld(paths.get(index + 1).getPosition());
+		} else {
+			start = Ulti.convertPositionWorld(paths.get(index).getPosition());
+			end = Ulti.convertPositionWorld(paths.get(index - 1).getPosition());
+		}
 		float dx = end.x - start.x;
 		float dy = end.y - start.y;
 		if (dx > 0 && dy == 0)
@@ -599,12 +1112,28 @@ public class Enemy extends BaseUnit {
 		this.distance = distance;
 	}
 
-	public ArrayList<Vector2> getPaths() {
+	public ArrayList<Piece> getPaths() {
 		return paths;
 	}
 
-	public void setPaths(ArrayList<Vector2> paths) {
+	public void setPaths(ArrayList<Piece> paths) {
 		this.paths = paths;
+	}
+
+	public int getPath() {
+		return path;
+	}
+
+	public void setPath(int path) {
+		this.path = path;
+	}
+
+	public void setSkills(Skill skills) {
+		this.skills = skills;
+	}
+
+	public Skill getSkills() {
+		return skills;
 	}
 
 	@Override
@@ -618,6 +1147,20 @@ public class Enemy extends BaseUnit {
 		// TODO Auto-generated method stub
 		setState(STATE.DEAD);
 		setPosition(0, 0);
+		time_to_attack = 0;
+		index = 0;
+		time_extra = 0;
+		time_to_teleport = 0;
+		time_to_hex = 0;
+		time_to_vampire = 0;
+		time_to_heath = 0;
+		time_to_speedup = 0;
+		time_speedup = 0;
+		isVampire = false;
+		isStop = false;
+		isSpeedUp = false;
+		setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
+		skills = null;
 	}
 
 }

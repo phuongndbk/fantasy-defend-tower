@@ -12,10 +12,10 @@ public class Ulti {
 		return kq;
 	}
 
-	public static Vector2 convertPositionWorld(int x, int y) {
+	public static Vector2 convertPositionWorld_2(int x, int y) {
 		Vector2 kq = new Vector2();
-		kq.x = y * Constant.MAP_UNIT_SIZE_WIDTH;
-		kq.y = (Constant.MAP_ROWS - x - 1) * Constant.MAP_UNIT_SIZE_HEIGHT;
+		kq.x = x * Constant.MAP_UNIT_SIZE_WIDTH;
+		kq.y = y * Constant.MAP_UNIT_SIZE_HEIGHT;
 		return kq;
 	}
 }

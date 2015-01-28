@@ -1,32 +1,24 @@
 package com.phuongnd.game.model;
 
+import com.badlogic.gdx.math.Vector2;
+
 public class Piece {
 
-	private int x;
-	private int y;
+	private Vector2 position;
 	private int id;
 
-	public Piece(int id, int x, int y) {
+	public Piece(int id, Vector2 position) {
 		super();
-		this.x = x;
-		this.y = y;
+		this.position = position;
 		this.id = id;
 	}
 
-	public int getX() {
-		return x;
+	public Vector2 getPosition() {
+		return position;
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
+	public void setPosition(Vector2 position) {
+		this.position = position;
 	}
 
 	public int getId() {
