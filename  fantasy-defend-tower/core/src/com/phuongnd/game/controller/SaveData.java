@@ -29,6 +29,8 @@ public class SaveData {
 	private int level;
 	private int power;
 
+	private int[] stars = new int[30];
+
 	public String file;
 
 	// Tao 1 doi tuong de luu vao 1 o nho (co 3 o nho - slot se duoc dung de luu
@@ -40,6 +42,10 @@ public class SaveData {
 		score = bonusScore = totalScore = 0;
 		level = 1;
 		power = 3;
+
+		for (int i = 0; i < stars.length; i++) {
+			stars[i] = -1;
+		}
 	}
 
 	// Thiet lap lai tat ca cac thong so tro choi ve trang thai ban dau
@@ -50,11 +56,16 @@ public class SaveData {
 		money = 0;
 		score = bonusScore = totalScore = 0;
 		power = 3;
+
+		for (int i = 0; i < stars.length; i++) {
+			stars[i] = -1;
+		}
 	}
 
 	// Doc file .saveGame da luu trong bo nho trong
 	public void load() {
 		BufferedReader in = null;
+
 		try {
 			in = new BufferedReader(new InputStreamReader(Gdx.files.external(
 					file).read()));
@@ -62,6 +73,10 @@ public class SaveData {
 			totalScore = Integer.parseInt(in.readLine());
 			level = Integer.parseInt(in.readLine());
 			power = Integer.parseInt(in.readLine());
+
+			for (int i = 0; i < stars.length; i++) {
+				stars[i] = Integer.parseInt(in.readLine());
+			}
 		} catch (Throwable e) {
 			// :( It's ok we have defaults
 		} finally {
@@ -80,10 +95,14 @@ public class SaveData {
 		try {
 			out = new BufferedWriter(new OutputStreamWriter(Gdx.files.external(
 					file).write(false)));
-			out.write(Integer.toString(money));
-			out.write(Integer.toString(totalScore));
-			out.write(Integer.toString(level));
-			out.write(Integer.toString(power));
+			out.write(Integer.toString(money) + "\n");
+			out.write(Integer.toString(totalScore) + "\n");
+			out.write(Integer.toString(level) + "\n");
+			out.write(Integer.toString(power) + "\n");
+
+			for (int i = 0; i < stars.length; i++) {
+				out.write(Integer.toString(stars[i]) + "\n");
+			}
 		} catch (Throwable e) {
 		} finally {
 			try {
@@ -141,6 +160,14 @@ public class SaveData {
 
 	public void setPower(int power) {
 		this.power = power;
+	}
+
+	public int[] getStars() {
+		return stars;
+	}
+
+	public void setStars(int[] stars) {
+		this.stars = stars;
 	}
 
 	public String getFile() {

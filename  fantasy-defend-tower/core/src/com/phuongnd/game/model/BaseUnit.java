@@ -19,6 +19,12 @@ public abstract class BaseUnit implements Poolable {
 
 	private MOVE_STATE move_state;
 
+	public enum SKILL_AFFECTED_STATE {
+		NORMAL, NINJA, TELEPORT, HEX, BITE, MOON, HEALTH, SPEED_UP, CARRY_OUT
+	}
+
+	private SKILL_AFFECTED_STATE skill_affected;
+
 	private String name;
 	private String description;
 
@@ -43,6 +49,7 @@ public abstract class BaseUnit implements Poolable {
 		// TODO Auto-generated constructor stub
 		position = new Vector2();
 		setState(STATE.DEAD);
+		setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
 	}
 
 	// public BaseUnit(int id, Vector2 position, int numAni) {
@@ -72,6 +79,14 @@ public abstract class BaseUnit implements Poolable {
 
 	public void setMove_state(MOVE_STATE move_state) {
 		this.move_state = move_state;
+	}
+
+	public SKILL_AFFECTED_STATE getSkill_affected() {
+		return skill_affected;
+	}
+
+	public void setSkill_affected(SKILL_AFFECTED_STATE skill_affected) {
+		this.skill_affected = skill_affected;
 	}
 
 	public String getName() {
@@ -239,6 +254,6 @@ public abstract class BaseUnit implements Poolable {
 
 	public abstract String toString();
 
-	public abstract void attack(BaseUnit unit, float delta);
+	public abstract void attack(BaseUnit unit);
 
 }

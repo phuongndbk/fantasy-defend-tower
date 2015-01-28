@@ -31,6 +31,7 @@ public class Setting {
 	public static SaveData[] saveDatas = new SaveData[] {
 			new SaveData("slot1"), new SaveData("slot2"), new SaveData("slot3") };
 	public static int slotSelected = 0;
+	public static int star = 0;
 
 	// etc...
 	public static Skin skin = new Skin(
@@ -81,6 +82,11 @@ public class Setting {
 	}
 
 	public static void load() {
+		if (Gdx.files.external(file) == null) {
+			save();
+			return;
+		}
+
 		BufferedReader in = null;
 		try {
 			in = new BufferedReader(new InputStreamReader(Gdx.files.external(
@@ -90,6 +96,7 @@ public class Setting {
 			slot1DataSaved = Boolean.parseBoolean(in.readLine());
 			slot2DataSaved = Boolean.parseBoolean(in.readLine());
 			slot3DataSaved = Boolean.parseBoolean(in.readLine());
+
 			for (int i = 0; i < 5; i++) {
 				names[i] = in.readLine();
 				scores[i] = Integer.parseInt(in.readLine());
@@ -111,14 +118,14 @@ public class Setting {
 		try {
 			out = new BufferedWriter(new OutputStreamWriter(Gdx.files.external(
 					file).write(false)));
-			out.write(Boolean.toString(soundEnabled));
-			out.write(Boolean.toString(musicEnabled));
-			out.write(Boolean.toString(slot1DataSaved));
-			out.write(Boolean.toString(slot2DataSaved));
-			out.write(Boolean.toString(slot3DataSaved));
+			out.write(Boolean.toString(soundEnabled) + "\n");
+			out.write(Boolean.toString(musicEnabled) + "\n");
+			out.write(Boolean.toString(slot1DataSaved) + "\n");
+			out.write(Boolean.toString(slot2DataSaved) + "\n");
+			out.write(Boolean.toString(slot3DataSaved) + "\n");
 			for (int i = 0; i < 5; i++) {
-				out.write(names[i]);
-				out.write(Integer.toString(scores[i]));
+				out.write(names[i] + "\n");
+				out.write(Integer.toString(scores[i]) + "\n");
 			}
 
 		} catch (Throwable e) {
