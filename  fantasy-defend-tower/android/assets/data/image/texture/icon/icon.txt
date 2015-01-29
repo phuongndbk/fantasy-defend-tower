@@ -1,0 +1,81 @@
+icon.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+armor
+  rotate: false
+  xy: 2, 356
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+attack_speed
+  rotate: false
+  xy: 2, 224
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+damage
+  rotate: false
+  xy: 2, 422
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+hex
+  rotate: false
+  xy: 2, 106
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+moon
+  rotate: false
+  xy: 2, 54
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+ninja
+  rotate: false
+  xy: 54, 54
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+range
+  rotate: false
+  xy: 2, 290
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+skill
+  rotate: false
+  xy: 54, 2
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+speed
+  rotate: false
+  xy: 2, 158
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+teleport
+  rotate: false
+  xy: 2, 2
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+vampire
+  rotate: false
+  xy: 54, 106
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
