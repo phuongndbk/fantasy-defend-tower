@@ -63,28 +63,31 @@ public class Constant {
 	public static final int ENEMY_1_SPEED = 30;
 	public static final int ENEMY_1_DAMAGE = 1;
 	public static final int ENEMY_1_ARMOR = 0;
-	public static final int ENEMY_1_RANGE = 2;
+	public static final int ENEMY_1_RANGE = 0;
 	public static final int ENEMY_1_SKILL = 1;
 	public static final int ENEMY_1_ATTACK_SPEED = 1;
 	public static final int ENEMY_1_LIFE_COST = 1;
+	public static final int ENEMY_1_COIN = 10;
 
 	public static final int ENEMY_2_HP = 1;
 	public static final int ENEMY_2_SPEED = 40;
 	public static final int ENEMY_2_DAMAGE = 1;
 	public static final int ENEMY_2_ARMOR = 1;
-	public static final int ENEMY_2_RANGE = 3;
+	public static final int ENEMY_2_RANGE = 0;
 	public static final int ENEMY_2_SKILL = 1;
 	public static final int ENEMY_2_ATTACK_SPEED = 1;
 	public static final int ENEMY_2_LIFE_COST = 1;
+	public static final int ENEMY_2_COIN = 10;
 
 	public static final int ENEMY_3_HP = 1;
 	public static final int ENEMY_3_SPEED = 50;
 	public static final int ENEMY_3_DAMAGE = 1;
 	public static final int ENEMY_3_ARMOR = 1;
-	public static final int ENEMY_3_RANGE = 1;
+	public static final int ENEMY_3_RANGE = 0;
 	public static final int ENEMY_3_SKILL = 1;
 	public static final int ENEMY_3_ATTACK_SPEED = 1;
 	public static final int ENEMY_3_LIFE_COST = 1;
+	public static final int ENEMY_3_COIN = 10;
 
 	public static final int ENEMY_4_HP = 1;
 	public static final int ENEMY_4_SPEED = 10;
@@ -94,6 +97,7 @@ public class Constant {
 	public static final int ENEMY_4_SKILL = 1;
 	public static final int ENEMY_4_ATTACK_SPEED = 1;
 	public static final int ENEMY_4_LIFE_COST = 1;
+	public static final int ENEMY_4_COIN = 10;
 
 	public static final int ENEMY_5_HP = 1;
 	public static final int ENEMY_5_SPEED = 40;
@@ -103,6 +107,7 @@ public class Constant {
 	public static final int ENEMY_5_SKILL = 1;
 	public static final int ENEMY_5_ATTACK_SPEED = 1;
 	public static final int ENEMY_5_LIFE_COST = 1;
+	public static final int ENEMY_5_COIN = 10;
 
 	public static final int ENEMY_6_HP = 1;
 	public static final int ENEMY_6_SPEED = 1;
@@ -112,6 +117,7 @@ public class Constant {
 	public static final int ENEMY_6_SKILL = 1;
 	public static final int ENEMY_6_ATTACK_SPEED = 1;
 	public static final int ENEMY_6_LIFE_COST = 1;
+	public static final int ENEMY_6_COIN = 10;
 
 	public static final int ENEMY_7_HP = 1;
 	public static final int ENEMY_7_SPEED = 1;
@@ -121,6 +127,7 @@ public class Constant {
 	public static final int ENEMY_7_SKILL = 1;
 	public static final int ENEMY_7_ATTACK_SPEED = 1;
 	public static final int ENEMY_7_LIFE_COST = 1;
+	public static final int ENEMY_7_COIN = 10;
 
 	public static final int ENEMY_8_HP = 1;
 	public static final int ENEMY_8_SPEED = 1;
@@ -130,6 +137,7 @@ public class Constant {
 	public static final int ENEMY_8_SKILL = 1;
 	public static final int ENEMY_8_ATTACK_SPEED = 1;
 	public static final int ENEMY_8_LIFE_COST = 1;
+	public static final int ENEMY_8_COIN = 10;
 
 	public static final int ENEMY_9_HP = 1;
 	public static final int ENEMY_9_SPEED = 1;
@@ -139,6 +147,7 @@ public class Constant {
 	public static final int ENEMY_9_SKILL = 1;
 	public static final int ENEMY_9_ATTACK_SPEED = 1;
 	public static final int ENEMY_9_LIFE_COST = 1;
+	public static final int ENEMY_9_COIN = 10;
 
 	public static final int ENEMY_10_HP = 1;
 	public static final int ENEMY_10_SPEED = 1;
@@ -148,6 +157,7 @@ public class Constant {
 	public static final int ENEMY_10_SKILL = 1;
 	public static final int ENEMY_10_ATTACK_SPEED = 1;
 	public static final int ENEMY_10_LIFE_COST = 1;
+	public static final int ENEMY_10_COIN = 10;
 
 	public static final int ENEMY_11_HP = 1;
 	public static final int ENEMY_11_SPEED = 1;
@@ -157,6 +167,7 @@ public class Constant {
 	public static final int ENEMY_11_SKILL = 1;
 	public static final int ENEMY_11_ATTACK_SPEED = 1;
 	public static final int ENEMY_11_LIFE_COST = 1;
+	public static final int ENEMY_11_COIN = 10;
 
 	public static final int ENEMY_12_HP = 1;
 	public static final int ENEMY_12_SPEED = 1;
@@ -166,6 +177,7 @@ public class Constant {
 	public static final int ENEMY_12_SKILL = 1;
 	public static final int ENEMY_12_ATTACK_SPEED = 1;
 	public static final int ENEMY_12_LIFE_COST = 1;
+	public static final int ENEMY_12_COIN = 10;
 
 	public static final int ENEMY_13_HP = 1;
 	public static final int ENEMY_13_SPEED = 1;
@@ -175,6 +187,7 @@ public class Constant {
 	public static final int ENEMY_13_SKILL = 1;
 	public static final int ENEMY_13_ATTACK_SPEED = 1;
 	public static final int ENEMY_13_LIFE_COST = 1;
+	public static final int ENEMY_13_COIN = 10;
 
 	public static final int ENEMY_14_HP = 1;
 	public static final int ENEMY_14_SPEED = 1;
@@ -184,6 +197,7 @@ public class Constant {
 	public static final int ENEMY_14_SKILL = 1;
 	public static final int ENEMY_14_ATTACK_SPEED = 1;
 	public static final int ENEMY_14_LIFE_COST = 1;
+	public static final int ENEMY_14_COIN = 10;
 
 	public static final int ENEMY_15_HP = 1;
 	public static final int ENEMY_15_SPEED = 1;
@@ -193,6 +207,7 @@ public class Constant {
 	public static final int ENEMY_15_SKILL = 1;
 	public static final int ENEMY_15_ATTACK_SPEED = 1;
 	public static final int ENEMY_15_LIFE_COST = 1;
+	public static final int ENEMY_15_COIN = 10;
 
 	public static final int ENEMY_16_HP = 1;
 	public static final int ENEMY_16_SPEED = 1;
@@ -202,6 +217,7 @@ public class Constant {
 	public static final int ENEMY_16_SKILL = 1;
 	public static final int ENEMY_16_ATTACK_SPEED = 1;
 	public static final int ENEMY_16_LIFE_COST = 1;
+	public static final int ENEMY_16_COIN = 10;
 
 	public static final int ENEMY_17_HP = 1;
 	public static final int ENEMY_17_SPEED = 1;
@@ -211,6 +227,7 @@ public class Constant {
 	public static final int ENEMY_17_SKILL = 1;
 	public static final int ENEMY_17_ATTACK_SPEED = 1;
 	public static final int ENEMY_17_LIFE_COST = 1;
+	public static final int ENEMY_17_COIN = 10;
 
 	public static final int ENEMY_18_HP = 1;
 	public static final int ENEMY_18_SPEED = 1;
@@ -220,6 +237,7 @@ public class Constant {
 	public static final int ENEMY_18_SKILL = 1;
 	public static final int ENEMY_18_ATTACK_SPEED = 1;
 	public static final int ENEMY_18_LIFE_COST = 1;
+	public static final int ENEMY_18_COIN = 10;
 
 	public static final int ENEMY_19_HP = 1;
 	public static final int ENEMY_19_SPEED = 1;
@@ -229,6 +247,7 @@ public class Constant {
 	public static final int ENEMY_19_SKILL = 1;
 	public static final int ENEMY_19_ATTACK_SPEED = 1;
 	public static final int ENEMY_19_LIFE_COST = 1;
+	public static final int ENEMY_19_COIN = 10;
 
 	public static final int ENEMY_20_HP = 1;
 	public static final int ENEMY_20_SPEED = 1;
@@ -238,6 +257,7 @@ public class Constant {
 	public static final int ENEMY_20_SKILL = 1;
 	public static final int ENEMY_20_ATTACK_SPEED = 1;
 	public static final int ENEMY_20_LIFE_COST = 1;
+	public static final int ENEMY_20_COIN = 10;
 
 	// Bullet
 	public static final String BULLET_1_NAME = "bullet_1";
@@ -412,7 +432,7 @@ public class Constant {
 	public static final int WARRIOR_1_SPEED = 30;
 	public static final int WARRIOR_1_DAMAGE = 1;
 	public static final int WARRIOR_1_ARMOR = 0;
-	public static final int WARRIOR_1_RANGE = 2;
+	public static final int WARRIOR_1_RANGE = 0;
 	public static final int WARRIOR_1_SKILL = 1;
 	public static final int WARRIOR_1_ATTACK_SPEED = 1;
 
@@ -420,7 +440,7 @@ public class Constant {
 	public static final int WARRIOR_2_SPEED = 30;
 	public static final int WARRIOR_2_DAMAGE = 1;
 	public static final int WARRIOR_2_ARMOR = 0;
-	public static final int WARRIOR_2_RANGE = 1;
+	public static final int WARRIOR_2_RANGE = 0;
 	public static final int WARRIOR_2_SKILL = 1;
 	public static final int WARRIOR_2_ATTACK_SPEED = 1;
 
@@ -549,6 +569,12 @@ public class Constant {
 	// Circle
 	public static final String circle_atlas_path = "data/image/texture/circle/circle.txt";
 
+	// Tower
+	public static final String tower_atlas_path = "data/image/animation/tower/tower.txt";
+
+	// Icon
+	public static final String icon_atlas_path = "data/image/texture/icon/icon.txt";
+
 	// Font
 	public static final String font_path = "data/uiskin/font_stroke.fnt";
 
@@ -561,15 +587,48 @@ public class Constant {
 	public static final String warrior_3_path = "data/image/animation/warrior/warrior3.png";
 	public static final String warrior_4_path = "data/image/animation/warrior/warrior4.png";
 	public static final String warrior_5_path = "data/image/animation/warrior/warrior5.png";
-	public static final String hero_1_path = "data/image/animation/warrior/warrior6.png";
-	public static final String hero_2_path = "data/image/animation/warrior/warrior7.png";
-	public static final String hero_3_path = "data/image/animation/warrior/warrior8.png";
-	public static final String hero_4_path = "data/image/animation/warrior/warrior9.png";
-	public static final String hero_5_path = "data/image/animation/warrior/warrior10.png";
-	public static final String ninja_path = "data/image/animation/warrior/warrior10.png";
-	public static final String enemy_1_path = "data/image/animation/warrior/warrior10.png";
-	public static final String tower_1_path = "data/image/animation/warrior/warrior10.png";
-	public static final String bullet_1_path = "data/image/animation/warrior/warrior10.png";
+	public static final String hero_1_path = "data/image/animation/warrior/hero_1.png";
+	public static final String hero_2_path = "data/image/animation/warrior/hero_2.png";
+	public static final String hero_3_path = "data/image/animation/warrior/hero_3.png";
+	public static final String hero_4_path = "data/image/animation/warrior/hero_4.png";
+	public static final String hero_5_path = "data/image/animation/warrior/hero_5.png";
+	public static final String ninja_path = "data/image/animation/warrior/ninja.png";
+
+	public static final String enemy_1_path = "data/image/animation/enemy/enemy_1.png";
+	public static final String enemy_2_path = "data/image/animation/enemy/enemy_2.png";
+	public static final String enemy_3_path = "data/image/animation/enemy/enemy_3.png";
+	public static final String enemy_4_path = "data/image/animation/enemy/enemy_4.png";
+	public static final String enemy_5_path = "data/image/animation/enemy/enemy_5.png";
+	public static final String enemy_6_path = "data/image/animation/enemy/enemy_6.png";
+	public static final String enemy_7_path = "data/image/animation/enemy/enemy_7.png";
+	public static final String enemy_8_path = "data/image/animation/enemy/enemy_8.png";
+	public static final String enemy_9_path = "data/image/animation/enemy/enemy_9.png";
+	public static final String enemy_10_path = "data/image/animation/enemy/enemy_10.png";
+	public static final String enemy_11_path = "data/image/animation/enemy/enemy_11.png";
+	public static final String enemy_12_path = "data/image/animation/enemy/enemy_12.png";
+	public static final String enemy_13_path = "data/image/animation/enemy/enemy_13.png";
+	public static final String enemy_14_path = "data/image/animation/enemy/enemy_14.png";
+	public static final String enemy_15_path = "data/image/animation/enemy/enemy_15.png";
+	public static final String enemy_16_path = "data/image/animation/enemy/enemy_16.png";
+	public static final String enemy_17_path = "data/image/animation/enemy/enemy_17.png";
+	public static final String enemy_18_path = "data/image/animation/enemy/enemy_18.png";
+	public static final String enemy_19_path = "data/image/animation/enemy/enemy_19.png";
+	public static final String enemy_20_path = "data/image/animation/enemy/enemy_20.png";
+
+	public static final String tower_1_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_2_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_3_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_4_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_5_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_6_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_7_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_8_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_9_path = "data/image/animation/warrior/warrior1.png";
+	public static final String tower_10_path = "data/image/animation/warrior/warrior1.png";
+
+	public static final String bullet_1_path = "data/image/animation/bullet/bullet1.png";
+	public static final String bullet_2_path = "data/image/animation/bullet/bullet2.png";
+
 	public static final String example_animation_atlas_path = "data/image/animation/example/example.pack";
 
 	// Music and Sound

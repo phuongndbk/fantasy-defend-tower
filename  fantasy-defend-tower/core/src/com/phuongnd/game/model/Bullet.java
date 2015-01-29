@@ -35,8 +35,8 @@ public class Bullet extends BaseUnit {
 		this.target = target;
 		direction = new Vector2(1, 1);
 		start = getPosition();
-		destination = new Vector2(this.target.getPosition().x,
-				this.target.getPosition().y);
+		destination = new Vector2(this.target.getPosition().x
+				+ this.target.getWidth2() / 2, this.target.getPosition().y);
 
 		switch (getId()) {
 		case 1:
@@ -49,7 +49,7 @@ public class Bullet extends BaseUnit {
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
 			setAnimation(Assets.shared().bullet1_Animation_Right, 3);
-			belong_to = 1;
+			belong_to = 0;
 			type = 0;
 			break;
 		case 2:
@@ -58,19 +58,19 @@ public class Bullet extends BaseUnit {
 			setSpeed(Constant.BULLET_2_SPEED);
 			setDamage(Constant.BULLET_2_DAMAGE);
 			setRange(Constant.BULLET_2_RANGE);
-			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
-			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
-			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
-			setAnimation(Assets.shared().bullet1_Animation_Right, 3);
-			belong_to = 0;
+			setAnimation(Assets.shared().bullet2_Animation_Up, 0);
+			setAnimation(Assets.shared().bullet2_Animation_Down, 1);
+			setAnimation(Assets.shared().bullet2_Animation_Left, 2);
+			setAnimation(Assets.shared().bullet2_Animation_Right, 3);
+			belong_to = 1;
 			type = 0;
 			break;
 		case 3:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_3_NAME);
+			setDescription(Constant.BULLET_3_DESCRIPTION);
+			setSpeed(Constant.BULLET_3_SPEED);
+			setDamage(Constant.BULLET_3_DAMAGE);
+			setRange(Constant.BULLET_3_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -79,11 +79,11 @@ public class Bullet extends BaseUnit {
 			type = 0;
 			break;
 		case 4:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_4_NAME);
+			setDescription(Constant.BULLET_4_DESCRIPTION);
+			setSpeed(Constant.BULLET_4_SPEED);
+			setDamage(Constant.BULLET_4_DAMAGE);
+			setRange(Constant.BULLET_4_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -92,11 +92,11 @@ public class Bullet extends BaseUnit {
 			type = 0;
 			break;
 		case 5:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_5_NAME);
+			setDescription(Constant.BULLET_5_DESCRIPTION);
+			setSpeed(Constant.BULLET_5_SPEED);
+			setDamage(Constant.BULLET_5_DAMAGE);
+			setRange(Constant.BULLET_5_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -105,11 +105,11 @@ public class Bullet extends BaseUnit {
 			type = 0;
 			break;
 		case 6:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_6_NAME);
+			setDescription(Constant.BULLET_6_DESCRIPTION);
+			setSpeed(Constant.BULLET_6_SPEED);
+			setDamage(Constant.BULLET_6_DAMAGE);
+			setRange(Constant.BULLET_6_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -118,11 +118,11 @@ public class Bullet extends BaseUnit {
 			type = 0;
 			break;
 		case 7:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_7_NAME);
+			setDescription(Constant.BULLET_7_DESCRIPTION);
+			setSpeed(Constant.BULLET_7_SPEED);
+			setDamage(Constant.BULLET_7_DAMAGE);
+			setRange(Constant.BULLET_7_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -131,11 +131,11 @@ public class Bullet extends BaseUnit {
 			type = 0;
 			break;
 		case 8:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_8_NAME);
+			setDescription(Constant.BULLET_8_DESCRIPTION);
+			setSpeed(Constant.BULLET_8_SPEED);
+			setDamage(Constant.BULLET_8_DAMAGE);
+			setRange(Constant.BULLET_8_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -144,11 +144,11 @@ public class Bullet extends BaseUnit {
 			type = 0;
 			break;
 		case 9:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_9_NAME);
+			setDescription(Constant.BULLET_9_DESCRIPTION);
+			setSpeed(Constant.BULLET_9_SPEED);
+			setDamage(Constant.BULLET_9_DAMAGE);
+			setRange(Constant.BULLET_9_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -157,11 +157,11 @@ public class Bullet extends BaseUnit {
 			type = 0;
 			break;
 		case 10:
-			setName(Constant.BULLET_1_NAME);
-			setDescription(Constant.BULLET_1_DESCRIPTION);
-			setSpeed(Constant.BULLET_1_SPEED);
-			setDamage(Constant.BULLET_1_DAMAGE);
-			setRange(Constant.BULLET_1_RANGE);
+			setName(Constant.BULLET_10_NAME);
+			setDescription(Constant.BULLET_10_DESCRIPTION);
+			setSpeed(Constant.BULLET_10_SPEED);
+			setDamage(Constant.BULLET_10_DAMAGE);
+			setRange(Constant.BULLET_10_RANGE);
 			setAnimation(Assets.shared().bullet1_Animation_Up, 0);
 			setAnimation(Assets.shared().bullet1_Animation_Down, 1);
 			setAnimation(Assets.shared().bullet1_Animation_Left, 2);
@@ -285,7 +285,7 @@ public class Bullet extends BaseUnit {
 	}
 
 	public void attackArea(World world) {
-		if (belong_to == 0) {
+		if (belong_to == 1) {
 			for (Warrior warrior : world.activeWarrior) {
 				if (world.checkOverlapRadar(getPosition(),
 						warrior.getPosition(), getRange(), warrior.getRange())

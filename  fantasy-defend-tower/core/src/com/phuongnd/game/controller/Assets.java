@@ -34,6 +34,8 @@ public class Assets {
 	public TextureAtlas buttonAtlas;
 	public TextureAtlas backgroundAtlas;
 	public TextureAtlas circleAtlas;
+	public TextureAtlas iconAtlas;
+	public TextureAtlas towerAtlas;
 
 	// Texture
 	public Texture warrior1;
@@ -47,9 +49,41 @@ public class Assets {
 	public Texture hero4;
 	public Texture hero5;
 	public Texture ninja;
+
 	public Texture enemy1;
+	public Texture enemy2;
+	public Texture enemy3;
+	public Texture enemy4;
+	public Texture enemy5;
+	public Texture enemy6;
+	public Texture enemy7;
+	public Texture enemy8;
+	public Texture enemy9;
+	public Texture enemy10;
+	public Texture enemy11;
+	public Texture enemy12;
+	public Texture enemy13;
+	public Texture enemy14;
+	public Texture enemy15;
+	public Texture enemy16;
+	public Texture enemy17;
+	public Texture enemy18;
+	public Texture enemy19;
+	public Texture enemy20;
+
 	public Texture tower1;
+	public Texture tower2;
+	public Texture tower3;
+	public Texture tower4;
+	public Texture tower5;
+	public Texture tower6;
+	public Texture tower7;
+	public Texture tower8;
+	public Texture tower9;
+	public Texture tower10;
+
 	public Texture bullet1;
+	public Texture bullet2;
 
 	// Texture: Menu Screen, Button, etc...
 	public TextureRegion backgroundMenu;
@@ -65,6 +99,17 @@ public class Assets {
 	public TextureRegion map_2;
 	public TextureRegion map_3;
 	public TextureRegion map_4;
+
+	public TextureRegion tower_1;
+	public TextureRegion tower_2;
+	public TextureRegion tower_3;
+	public TextureRegion tower_4;
+	public TextureRegion tower_5;
+	public TextureRegion tower_6;
+	public TextureRegion tower_7;
+	public TextureRegion tower_8;
+	public TextureRegion tower_9;
+	public TextureRegion tower_10;
 
 	public TextureRegion button_back;
 	public TextureRegion button_build;
@@ -123,6 +168,20 @@ public class Assets {
 	// Circle
 	public TextureRegion tower_range;
 	public TextureRegion enemy_range;
+
+	// Skill
+	public TextureRegion skill_ninja;
+	public TextureRegion skill_hex;
+	public TextureRegion skill_teleport;
+	public TextureRegion skill_vampire;
+	public TextureRegion skill_moon;
+
+	public TextureRegion damage;
+	public TextureRegion armor;
+	public TextureRegion speed;
+	public TextureRegion range;
+	public TextureRegion skill;
+	public TextureRegion attack_speed;
 
 	// Font
 	public BitmapFont font;
@@ -192,17 +251,162 @@ public class Assets {
 	public Animation enemy1_Animation_Left;
 	public Animation enemy1_Animation_Right;
 
+	public Animation enemy2_Animation_Up;
+	public Animation enemy2_Animation_Down;
+	public Animation enemy2_Animation_Left;
+	public Animation enemy2_Animation_Right;
+
+	public Animation enemy3_Animation_Up;
+	public Animation enemy3_Animation_Down;
+	public Animation enemy3_Animation_Left;
+	public Animation enemy3_Animation_Right;
+
+	public Animation enemy4_Animation_Up;
+	public Animation enemy4_Animation_Down;
+	public Animation enemy4_Animation_Left;
+	public Animation enemy4_Animation_Right;
+
+	public Animation enemy5_Animation_Up;
+	public Animation enemy5_Animation_Down;
+	public Animation enemy5_Animation_Left;
+	public Animation enemy5_Animation_Right;
+
+	public Animation enemy6_Animation_Up;
+	public Animation enemy6_Animation_Down;
+	public Animation enemy6_Animation_Left;
+	public Animation enemy6_Animation_Right;
+
+	public Animation enemy7_Animation_Up;
+	public Animation enemy7_Animation_Down;
+	public Animation enemy7_Animation_Left;
+	public Animation enemy7_Animation_Right;
+
+	public Animation enemy8_Animation_Up;
+	public Animation enemy8_Animation_Down;
+	public Animation enemy8_Animation_Left;
+	public Animation enemy8_Animation_Right;
+
+	public Animation enemy9_Animation_Up;
+	public Animation enemy9_Animation_Down;
+	public Animation enemy9_Animation_Left;
+	public Animation enemy9_Animation_Right;
+
+	public Animation enemy10_Animation_Up;
+	public Animation enemy10_Animation_Down;
+	public Animation enemy10_Animation_Left;
+	public Animation enemy10_Animation_Right;
+
+	public Animation enemy11_Animation_Up;
+	public Animation enemy11_Animation_Down;
+	public Animation enemy11_Animation_Left;
+	public Animation enemy11_Animation_Right;
+
+	public Animation enemy12_Animation_Up;
+	public Animation enemy12_Animation_Down;
+	public Animation enemy12_Animation_Left;
+	public Animation enemy12_Animation_Right;
+
+	public Animation enemy13_Animation_Up;
+	public Animation enemy13_Animation_Down;
+	public Animation enemy13_Animation_Left;
+	public Animation enemy13_Animation_Right;
+
+	public Animation enemy14_Animation_Up;
+	public Animation enemy14_Animation_Down;
+	public Animation enemy14_Animation_Left;
+	public Animation enemy14_Animation_Right;
+
+	public Animation enemy15_Animation_Up;
+	public Animation enemy15_Animation_Down;
+	public Animation enemy15_Animation_Left;
+	public Animation enemy15_Animation_Right;
+
+	public Animation enemy16_Animation_Up;
+	public Animation enemy16_Animation_Down;
+	public Animation enemy16_Animation_Left;
+	public Animation enemy16_Animation_Right;
+
+	public Animation enemy17_Animation_Up;
+	public Animation enemy17_Animation_Down;
+	public Animation enemy17_Animation_Left;
+	public Animation enemy17_Animation_Right;
+
+	public Animation enemy18_Animation_Up;
+	public Animation enemy18_Animation_Down;
+	public Animation enemy18_Animation_Left;
+	public Animation enemy18_Animation_Right;
+
+	public Animation enemy19_Animation_Up;
+	public Animation enemy19_Animation_Down;
+	public Animation enemy19_Animation_Left;
+	public Animation enemy19_Animation_Right;
+
+	public Animation enemy20_Animation_Up;
+	public Animation enemy20_Animation_Down;
+	public Animation enemy20_Animation_Left;
+	public Animation enemy20_Animation_Right;
+
 	// Bullet
 	public Animation bullet1_Animation_Up;
 	public Animation bullet1_Animation_Down;
 	public Animation bullet1_Animation_Left;
 	public Animation bullet1_Animation_Right;
 
+	public Animation bullet2_Animation_Up;
+	public Animation bullet2_Animation_Down;
+	public Animation bullet2_Animation_Left;
+	public Animation bullet2_Animation_Right;
+
 	// Tower
-	public Animation tower1_Animation_Up;
-	public Animation tower1_Animation_Down;
-	public Animation tower1_Animation_Left;
-	public Animation tower1_Animation_Right;
+	// public Animation tower1_Animation_Up;
+	// public Animation tower1_Animation_Down;
+	// public Animation tower1_Animation_Left;
+	// public Animation tower1_Animation_Right;
+	//
+	// public Animation tower2_Animation_Up;
+	// public Animation tower2_Animation_Down;
+	// public Animation tower2_Animation_Left;
+	// public Animation tower2_Animation_Right;
+	//
+	// public Animation tower3_Animation_Up;
+	// public Animation tower3_Animation_Down;
+	// public Animation tower3_Animation_Left;
+	// public Animation tower3_Animation_Right;
+	//
+	// public Animation tower4_Animation_Up;
+	// public Animation tower4_Animation_Down;
+	// public Animation tower4_Animation_Left;
+	// public Animation tower4_Animation_Right;
+	//
+	// public Animation tower5_Animation_Up;
+	// public Animation tower5_Animation_Down;
+	// public Animation tower5_Animation_Left;
+	// public Animation tower5_Animation_Right;
+	//
+	// public Animation tower6_Animation_Up;
+	// public Animation tower6_Animation_Down;
+	// public Animation tower6_Animation_Left;
+	// public Animation tower6_Animation_Right;
+	//
+	// public Animation tower7_Animation_Up;
+	// public Animation tower7_Animation_Down;
+	// public Animation tower7_Animation_Left;
+	// public Animation tower7_Animation_Right;
+	//
+	// public Animation tower8_Animation_Up;
+	// public Animation tower8_Animation_Down;
+	// public Animation tower8_Animation_Left;
+	// public Animation tower8_Animation_Right;
+	//
+	// public Animation tower9_Animation_Up;
+	// public Animation tower9_Animation_Down;
+	// public Animation tower9_Animation_Left;
+	// public Animation tower9_Animation_Right;
+	//
+	// public Animation tower10_Animation_Up;
+	// public Animation tower10_Animation_Down;
+	// public Animation tower10_Animation_Left;
+	// public Animation tower10_Animation_Right;
 
 	// Music and sound
 	public Music backgroundPlayMusic;
@@ -250,9 +454,41 @@ public class Assets {
 		manager.load(Constant.hero_4_path, Texture.class);
 		manager.load(Constant.hero_5_path, Texture.class);
 		manager.load(Constant.ninja_path, Texture.class);
+
 		manager.load(Constant.enemy_1_path, Texture.class);
+		manager.load(Constant.enemy_2_path, Texture.class);
+		manager.load(Constant.enemy_3_path, Texture.class);
+		manager.load(Constant.enemy_4_path, Texture.class);
+		manager.load(Constant.enemy_5_path, Texture.class);
+		manager.load(Constant.enemy_6_path, Texture.class);
+		manager.load(Constant.enemy_7_path, Texture.class);
+		manager.load(Constant.enemy_8_path, Texture.class);
+		manager.load(Constant.enemy_9_path, Texture.class);
+		manager.load(Constant.enemy_10_path, Texture.class);
+		manager.load(Constant.enemy_11_path, Texture.class);
+		manager.load(Constant.enemy_12_path, Texture.class);
+		manager.load(Constant.enemy_13_path, Texture.class);
+		manager.load(Constant.enemy_14_path, Texture.class);
+		manager.load(Constant.enemy_15_path, Texture.class);
+		manager.load(Constant.enemy_16_path, Texture.class);
+		manager.load(Constant.enemy_17_path, Texture.class);
+		manager.load(Constant.enemy_18_path, Texture.class);
+		manager.load(Constant.enemy_19_path, Texture.class);
+		manager.load(Constant.enemy_20_path, Texture.class);
+
 		manager.load(Constant.tower_1_path, Texture.class);
+		manager.load(Constant.tower_2_path, Texture.class);
+		manager.load(Constant.tower_3_path, Texture.class);
+		manager.load(Constant.tower_4_path, Texture.class);
+		manager.load(Constant.tower_5_path, Texture.class);
+		manager.load(Constant.tower_6_path, Texture.class);
+		manager.load(Constant.tower_7_path, Texture.class);
+		manager.load(Constant.tower_8_path, Texture.class);
+		manager.load(Constant.tower_9_path, Texture.class);
+		manager.load(Constant.tower_10_path, Texture.class);
+
 		manager.load(Constant.bullet_1_path, Texture.class);
+		manager.load(Constant.bullet_2_path, Texture.class);
 
 		/**********************************************************************************************/
 		// Maps
@@ -262,6 +498,8 @@ public class Assets {
 		manager.load(Constant.background_atlas_path, TextureAtlas.class);
 		manager.load(Constant.button_atlas_path, TextureAtlas.class);
 		manager.load(Constant.circle_atlas_path, TextureAtlas.class);
+		manager.load(Constant.icon_atlas_path, TextureAtlas.class);
+		manager.load(Constant.tower_atlas_path, TextureAtlas.class);
 
 		/**********************************************************************************************/
 		// Music and sound
@@ -294,12 +532,48 @@ public class Assets {
 		manager.unload(Constant.hero_4_path);
 		manager.unload(Constant.hero_5_path);
 		manager.unload(Constant.ninja_path);
+
 		manager.unload(Constant.enemy_1_path);
+		manager.unload(Constant.enemy_2_path);
+		manager.unload(Constant.enemy_3_path);
+		manager.unload(Constant.enemy_4_path);
+		manager.unload(Constant.enemy_5_path);
+		manager.unload(Constant.enemy_6_path);
+		manager.unload(Constant.enemy_7_path);
+		manager.unload(Constant.enemy_8_path);
+		manager.unload(Constant.enemy_9_path);
+		manager.unload(Constant.enemy_10_path);
+		manager.unload(Constant.enemy_11_path);
+		manager.unload(Constant.enemy_12_path);
+		manager.unload(Constant.enemy_13_path);
+		manager.unload(Constant.enemy_14_path);
+		manager.unload(Constant.enemy_15_path);
+		manager.unload(Constant.enemy_16_path);
+		manager.unload(Constant.enemy_17_path);
+		manager.unload(Constant.enemy_18_path);
+		manager.unload(Constant.enemy_19_path);
+		manager.unload(Constant.enemy_20_path);
+
 		manager.unload(Constant.tower_1_path);
+		manager.unload(Constant.tower_2_path);
+		manager.unload(Constant.tower_3_path);
+		manager.unload(Constant.tower_4_path);
+		manager.unload(Constant.tower_5_path);
+		manager.unload(Constant.tower_6_path);
+		manager.unload(Constant.tower_7_path);
+		manager.unload(Constant.tower_8_path);
+		manager.unload(Constant.tower_9_path);
+		manager.unload(Constant.tower_10_path);
+
 		manager.unload(Constant.bullet_1_path);
+		manager.unload(Constant.bullet_2_path);
+
 		manager.unload(Constant.map_atlas_path);
 		manager.unload(Constant.button_atlas_path);
 		manager.unload(Constant.circle_atlas_path);
+		manager.unload(Constant.icon_atlas_path);
+		manager.unload(Constant.tower_atlas_path);
+
 		manager.unload(Constant.background_atlas_path);
 		manager.unload(Constant.backgroundPlayMusic_path);
 		manager.unload(Constant.buttonClick_path);
@@ -420,16 +694,292 @@ public class Assets {
 		enemy1_Animation_Right = load_AnimationSprite(enemy1, 4, 4, 3, false,
 				0.2f);
 
+		enemy2 = manager.get(Constant.enemy_2_path);
+		enemy2_Animation_Up = load_AnimationSprite(enemy2, 4, 4, 4, false, 0.2f);
+		enemy2_Animation_Down = load_AnimationSprite(enemy2, 4, 4, 1, false,
+				0.2f);
+		enemy2_Animation_Left = load_AnimationSprite(enemy2, 4, 4, 2, false,
+				0.2f);
+		enemy2_Animation_Right = load_AnimationSprite(enemy2, 4, 4, 3, false,
+				0.2f);
+
+		enemy3 = manager.get(Constant.enemy_3_path);
+		enemy3_Animation_Up = load_AnimationSprite(enemy3, 4, 4, 4, false, 0.2f);
+		enemy3_Animation_Down = load_AnimationSprite(enemy3, 4, 4, 1, false,
+				0.2f);
+		enemy3_Animation_Left = load_AnimationSprite(enemy3, 4, 4, 2, false,
+				0.2f);
+		enemy3_Animation_Right = load_AnimationSprite(enemy3, 4, 4, 3, false,
+				0.2f);
+
+		enemy4 = manager.get(Constant.enemy_4_path);
+		enemy4_Animation_Up = load_AnimationSprite(enemy4, 4, 4, 4, false, 0.2f);
+		enemy4_Animation_Down = load_AnimationSprite(enemy4, 4, 4, 1, false,
+				0.2f);
+		enemy4_Animation_Left = load_AnimationSprite(enemy4, 4, 4, 2, false,
+				0.2f);
+		enemy4_Animation_Right = load_AnimationSprite(enemy4, 4, 4, 3, false,
+				0.2f);
+
+		enemy5 = manager.get(Constant.enemy_5_path);
+		enemy5_Animation_Up = load_AnimationSprite(enemy5, 4, 4, 4, false, 0.2f);
+		enemy5_Animation_Down = load_AnimationSprite(enemy5, 4, 4, 1, false,
+				0.2f);
+		enemy5_Animation_Left = load_AnimationSprite(enemy5, 4, 4, 2, false,
+				0.2f);
+		enemy5_Animation_Right = load_AnimationSprite(enemy5, 4, 4, 3, false,
+				0.2f);
+
+		enemy6 = manager.get(Constant.enemy_6_path);
+		enemy6_Animation_Up = load_AnimationSprite(enemy6, 4, 4, 4, false, 0.2f);
+		enemy6_Animation_Down = load_AnimationSprite(enemy6, 4, 4, 1, false,
+				0.2f);
+		enemy6_Animation_Left = load_AnimationSprite(enemy6, 4, 4, 2, false,
+				0.2f);
+		enemy6_Animation_Right = load_AnimationSprite(enemy6, 4, 4, 3, false,
+				0.2f);
+
+		enemy7 = manager.get(Constant.enemy_7_path);
+		enemy7_Animation_Up = load_AnimationSprite(enemy7, 4, 4, 4, false, 0.2f);
+		enemy7_Animation_Down = load_AnimationSprite(enemy7, 4, 4, 1, false,
+				0.2f);
+		enemy7_Animation_Left = load_AnimationSprite(enemy7, 4, 4, 2, false,
+				0.2f);
+		enemy7_Animation_Right = load_AnimationSprite(enemy7, 4, 4, 3, false,
+				0.2f);
+
+		enemy8 = manager.get(Constant.enemy_8_path);
+		enemy8_Animation_Up = load_AnimationSprite(enemy8, 4, 4, 4, false, 0.2f);
+		enemy8_Animation_Down = load_AnimationSprite(enemy8, 4, 4, 1, false,
+				0.2f);
+		enemy8_Animation_Left = load_AnimationSprite(enemy8, 4, 4, 2, false,
+				0.2f);
+		enemy8_Animation_Right = load_AnimationSprite(enemy8, 4, 4, 3, false,
+				0.2f);
+
+		enemy9 = manager.get(Constant.enemy_9_path);
+		enemy9_Animation_Up = load_AnimationSprite(enemy9, 4, 4, 4, false, 0.2f);
+		enemy9_Animation_Down = load_AnimationSprite(enemy9, 4, 4, 1, false,
+				0.2f);
+		enemy9_Animation_Left = load_AnimationSprite(enemy9, 4, 4, 2, false,
+				0.2f);
+		enemy9_Animation_Right = load_AnimationSprite(enemy9, 4, 4, 3, false,
+				0.2f);
+
+		enemy10 = manager.get(Constant.enemy_10_path);
+		enemy10_Animation_Up = load_AnimationSprite(enemy10, 4, 4, 4, false,
+				0.2f);
+		enemy10_Animation_Down = load_AnimationSprite(enemy10, 4, 4, 1, false,
+				0.2f);
+		enemy10_Animation_Left = load_AnimationSprite(enemy10, 4, 4, 2, false,
+				0.2f);
+		enemy10_Animation_Right = load_AnimationSprite(enemy10, 4, 4, 3, false,
+				0.2f);
+
+		enemy11 = manager.get(Constant.enemy_11_path);
+		enemy11_Animation_Up = load_AnimationSprite(enemy11, 4, 4, 4, false,
+				0.2f);
+		enemy11_Animation_Down = load_AnimationSprite(enemy11, 4, 4, 1, false,
+				0.2f);
+		enemy11_Animation_Left = load_AnimationSprite(enemy11, 4, 4, 2, false,
+				0.2f);
+		enemy11_Animation_Right = load_AnimationSprite(enemy11, 4, 4, 3, false,
+				0.2f);
+
+		enemy12 = manager.get(Constant.enemy_12_path);
+		enemy12_Animation_Up = load_AnimationSprite(enemy12, 4, 4, 4, false,
+				0.2f);
+		enemy12_Animation_Down = load_AnimationSprite(enemy12, 4, 4, 1, false,
+				0.2f);
+		enemy12_Animation_Left = load_AnimationSprite(enemy12, 4, 4, 2, false,
+				0.2f);
+		enemy12_Animation_Right = load_AnimationSprite(enemy12, 4, 4, 3, false,
+				0.2f);
+
+		enemy13 = manager.get(Constant.enemy_13_path);
+		enemy13_Animation_Up = load_AnimationSprite(enemy13, 4, 4, 4, false,
+				0.2f);
+		enemy13_Animation_Down = load_AnimationSprite(enemy13, 4, 4, 1, false,
+				0.2f);
+		enemy13_Animation_Left = load_AnimationSprite(enemy13, 4, 4, 2, false,
+				0.2f);
+		enemy13_Animation_Right = load_AnimationSprite(enemy13, 4, 4, 3, false,
+				0.2f);
+
+		enemy14 = manager.get(Constant.enemy_14_path);
+		enemy14_Animation_Up = load_AnimationSprite(enemy14, 4, 4, 4, false,
+				0.2f);
+		enemy14_Animation_Down = load_AnimationSprite(enemy14, 4, 4, 1, false,
+				0.2f);
+		enemy14_Animation_Left = load_AnimationSprite(enemy14, 4, 4, 2, false,
+				0.2f);
+		enemy14_Animation_Right = load_AnimationSprite(enemy14, 4, 4, 3, false,
+				0.2f);
+
+		enemy15 = manager.get(Constant.enemy_15_path);
+		enemy15_Animation_Up = load_AnimationSprite(enemy15, 4, 4, 4, false,
+				0.2f);
+		enemy15_Animation_Down = load_AnimationSprite(enemy15, 4, 4, 1, false,
+				0.2f);
+		enemy15_Animation_Left = load_AnimationSprite(enemy15, 4, 4, 2, false,
+				0.2f);
+		enemy15_Animation_Right = load_AnimationSprite(enemy15, 4, 4, 3, false,
+				0.2f);
+
+		enemy16 = manager.get(Constant.enemy_16_path);
+		enemy16_Animation_Up = load_AnimationSprite(enemy16, 4, 4, 4, false,
+				0.2f);
+		enemy16_Animation_Down = load_AnimationSprite(enemy16, 4, 4, 1, false,
+				0.2f);
+		enemy16_Animation_Left = load_AnimationSprite(enemy16, 4, 4, 2, false,
+				0.2f);
+		enemy16_Animation_Right = load_AnimationSprite(enemy16, 4, 4, 3, false,
+				0.2f);
+
+		enemy17 = manager.get(Constant.enemy_17_path);
+		enemy17_Animation_Up = load_AnimationSprite(enemy17, 4, 4, 4, false,
+				0.2f);
+		enemy17_Animation_Down = load_AnimationSprite(enemy17, 4, 4, 1, false,
+				0.2f);
+		enemy17_Animation_Left = load_AnimationSprite(enemy17, 4, 4, 2, false,
+				0.2f);
+		enemy17_Animation_Right = load_AnimationSprite(enemy17, 4, 4, 3, false,
+				0.2f);
+
+		enemy18 = manager.get(Constant.enemy_18_path);
+		enemy18_Animation_Up = load_AnimationSprite(enemy18, 4, 4, 4, false,
+				0.2f);
+		enemy18_Animation_Down = load_AnimationSprite(enemy18, 4, 4, 1, false,
+				0.2f);
+		enemy18_Animation_Left = load_AnimationSprite(enemy18, 4, 4, 2, false,
+				0.2f);
+		enemy18_Animation_Right = load_AnimationSprite(enemy18, 4, 4, 3, false,
+				0.2f);
+
+		enemy19 = manager.get(Constant.enemy_19_path);
+		enemy19_Animation_Up = load_AnimationSprite(enemy19, 4, 4, 4, false,
+				0.2f);
+		enemy19_Animation_Down = load_AnimationSprite(enemy19, 4, 4, 1, false,
+				0.2f);
+		enemy19_Animation_Left = load_AnimationSprite(enemy19, 4, 4, 2, false,
+				0.2f);
+		enemy19_Animation_Right = load_AnimationSprite(enemy19, 4, 4, 3, false,
+				0.2f);
+
+		enemy20 = manager.get(Constant.enemy_20_path);
+		enemy20_Animation_Up = load_AnimationSprite(enemy20, 4, 4, 4, false,
+				0.2f);
+		enemy20_Animation_Down = load_AnimationSprite(enemy20, 4, 4, 1, false,
+				0.2f);
+		enemy20_Animation_Left = load_AnimationSprite(enemy20, 4, 4, 2, false,
+				0.2f);
+		enemy20_Animation_Right = load_AnimationSprite(enemy20, 4, 4, 3, false,
+				0.2f);
+
 		/**********************************************************************************************/
 		// Tower
-		tower1 = manager.get(Constant.tower_1_path);
-		tower1_Animation_Up = load_AnimationSprite(tower1, 4, 4, 4, false, 0.2f);
-		tower1_Animation_Down = load_AnimationSprite(tower1, 4, 4, 1, false,
-				0.2f);
-		tower1_Animation_Left = load_AnimationSprite(tower1, 4, 4, 2, false,
-				0.2f);
-		tower1_Animation_Right = load_AnimationSprite(tower1, 4, 4, 3, false,
-				0.2f);
+		// tower1 = manager.get(Constant.tower_1_path);
+		// tower1_Animation_Up = load_AnimationSprite(tower1, 4, 4, 4, false,
+		// 0.2f);
+		// tower1_Animation_Down = load_AnimationSprite(tower1, 4, 4, 1, false,
+		// 0.2f);
+		// tower1_Animation_Left = load_AnimationSprite(tower1, 4, 4, 2, false,
+		// 0.2f);
+		// tower1_Animation_Right = load_AnimationSprite(tower1, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower2 = manager.get(Constant.tower_2_path);
+		// tower2_Animation_Up = load_AnimationSprite(tower2, 4, 4, 4, false,
+		// 0.2f);
+		// tower2_Animation_Down = load_AnimationSprite(tower2, 4, 4, 1, false,
+		// 0.2f);
+		// tower2_Animation_Left = load_AnimationSprite(tower2, 4, 4, 2, false,
+		// 0.2f);
+		// tower2_Animation_Right = load_AnimationSprite(tower2, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower3 = manager.get(Constant.tower_3_path);
+		// tower3_Animation_Up = load_AnimationSprite(tower3, 4, 4, 4, false,
+		// 0.2f);
+		// tower3_Animation_Down = load_AnimationSprite(tower3, 4, 4, 1, false,
+		// 0.2f);
+		// tower3_Animation_Left = load_AnimationSprite(tower3, 4, 4, 2, false,
+		// 0.2f);
+		// tower3_Animation_Right = load_AnimationSprite(tower3, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower4 = manager.get(Constant.tower_4_path);
+		// tower4_Animation_Up = load_AnimationSprite(tower4, 4, 4, 4, false,
+		// 0.2f);
+		// tower4_Animation_Down = load_AnimationSprite(tower4, 4, 4, 1, false,
+		// 0.2f);
+		// tower4_Animation_Left = load_AnimationSprite(tower4, 4, 4, 2, false,
+		// 0.2f);
+		// tower4_Animation_Right = load_AnimationSprite(tower4, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower5 = manager.get(Constant.tower_5_path);
+		// tower5_Animation_Up = load_AnimationSprite(tower5, 4, 4, 4, false,
+		// 0.2f);
+		// tower5_Animation_Down = load_AnimationSprite(tower5, 4, 4, 1, false,
+		// 0.2f);
+		// tower5_Animation_Left = load_AnimationSprite(tower5, 4, 4, 2, false,
+		// 0.2f);
+		// tower5_Animation_Right = load_AnimationSprite(tower5, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower6 = manager.get(Constant.tower_6_path);
+		// tower6_Animation_Up = load_AnimationSprite(tower6, 4, 4, 4, false,
+		// 0.2f);
+		// tower6_Animation_Down = load_AnimationSprite(tower6, 4, 4, 1, false,
+		// 0.2f);
+		// tower6_Animation_Left = load_AnimationSprite(tower6, 4, 4, 2, false,
+		// 0.2f);
+		// tower6_Animation_Right = load_AnimationSprite(tower6, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower7 = manager.get(Constant.tower_7_path);
+		// tower7_Animation_Up = load_AnimationSprite(tower7, 4, 4, 4, false,
+		// 0.2f);
+		// tower7_Animation_Down = load_AnimationSprite(tower7, 4, 4, 1, false,
+		// 0.2f);
+		// tower7_Animation_Left = load_AnimationSprite(tower7, 4, 4, 2, false,
+		// 0.2f);
+		// tower7_Animation_Right = load_AnimationSprite(tower7, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower8 = manager.get(Constant.tower_8_path);
+		// tower8_Animation_Up = load_AnimationSprite(tower8, 4, 4, 4, false,
+		// 0.2f);
+		// tower8_Animation_Down = load_AnimationSprite(tower8, 4, 4, 1, false,
+		// 0.2f);
+		// tower8_Animation_Left = load_AnimationSprite(tower8, 4, 4, 2, false,
+		// 0.2f);
+		// tower8_Animation_Right = load_AnimationSprite(tower8, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower9 = manager.get(Constant.tower_9_path);
+		// tower9_Animation_Up = load_AnimationSprite(tower9, 4, 4, 4, false,
+		// 0.2f);
+		// tower9_Animation_Down = load_AnimationSprite(tower9, 4, 4, 1, false,
+		// 0.2f);
+		// tower9_Animation_Left = load_AnimationSprite(tower9, 4, 4, 2, false,
+		// 0.2f);
+		// tower9_Animation_Right = load_AnimationSprite(tower9, 4, 4, 3, false,
+		// 0.2f);
+		//
+		// tower10 = manager.get(Constant.tower_10_path);
+		// tower10_Animation_Up = load_AnimationSprite(tower10, 4, 4, 4, false,
+		// 0.2f);
+		// tower10_Animation_Down = load_AnimationSprite(tower10, 4, 4, 1,
+		// false,
+		// 0.2f);
+		// tower10_Animation_Left = load_AnimationSprite(tower10, 4, 4, 2,
+		// false,
+		// 0.2f);
+		// tower10_Animation_Right = load_AnimationSprite(tower10, 4, 4, 3,
+		// false,
+		// 0.2f);
 
 		/**********************************************************************************************/
 		// Bullet
@@ -441,6 +991,16 @@ public class Assets {
 		bullet1_Animation_Left = load_AnimationSprite(bullet1, 4, 4, 2, false,
 				0.2f);
 		bullet1_Animation_Right = load_AnimationSprite(bullet1, 4, 4, 3, false,
+				0.2f);
+
+		bullet2 = manager.get(Constant.bullet_2_path);
+		bullet2_Animation_Up = load_AnimationSprite(bullet2, 4, 4, 4, false,
+				0.2f);
+		bullet2_Animation_Down = load_AnimationSprite(bullet2, 4, 4, 1, false,
+				0.2f);
+		bullet2_Animation_Left = load_AnimationSprite(bullet2, 4, 4, 2, false,
+				0.2f);
+		bullet2_Animation_Right = load_AnimationSprite(bullet2, 4, 4, 3, false,
 				0.2f);
 
 		/**********************************************************************************************/
@@ -523,6 +1083,35 @@ public class Assets {
 		circleAtlas = manager.get(Constant.circle_atlas_path);
 		tower_range = circleAtlas.findRegion("tower");
 		enemy_range = circleAtlas.findRegion("enemy");
+
+		// Skill
+		iconAtlas = manager.get(Constant.icon_atlas_path);
+		skill_ninja = iconAtlas.findRegion("ninja");
+		skill_hex = iconAtlas.findRegion("hex");
+		skill_teleport = iconAtlas.findRegion("teleport");
+		skill_vampire = iconAtlas.findRegion("vampire");
+		skill_moon = iconAtlas.findRegion("moon");
+
+		damage = iconAtlas.findRegion("damage");
+		armor = iconAtlas.findRegion("armor");
+		speed = iconAtlas.findRegion("speed");
+		range = iconAtlas.findRegion("range");
+		skill = iconAtlas.findRegion("skill");
+		attack_speed = iconAtlas.findRegion("attack_speed");
+
+		/**********************************************************************************************/
+		// Tower atlas
+		towerAtlas = manager.get(Constant.tower_atlas_path);
+		tower_1 = towerAtlas.findRegion("tower1");
+		tower_2 = towerAtlas.findRegion("tower1");
+		tower_3 = towerAtlas.findRegion("tower1");
+		tower_4 = towerAtlas.findRegion("tower1");
+		tower_5 = towerAtlas.findRegion("tower1");
+		tower_6 = towerAtlas.findRegion("tower2");
+		tower_7 = towerAtlas.findRegion("tower3");
+		tower_8 = towerAtlas.findRegion("tower4");
+		tower_9 = towerAtlas.findRegion("tower5");
+		tower_10 = towerAtlas.findRegion("tower6");
 
 		/**********************************************************************************************/
 		// Music and Sound

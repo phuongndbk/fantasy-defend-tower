@@ -27,6 +27,7 @@ public class SaveData {
 	private int bonusScore;
 	private int totalScore;
 	private int level;
+	private int levelMaxGain;
 	private int power;
 
 	private int[] stars = new int[30];
@@ -41,11 +42,15 @@ public class SaveData {
 		money = 0;
 		score = bonusScore = totalScore = 0;
 		level = 1;
+		levelMaxGain = 1;
 		power = 3;
 
 		for (int i = 0; i < stars.length; i++) {
 			stars[i] = -1;
 		}
+
+		if (Gdx.files.external(file) != null)
+			load();
 	}
 
 	// Thiet lap lai tat ca cac thong so tro choi ve trang thai ban dau
@@ -53,6 +58,7 @@ public class SaveData {
 	// hoac tao du lieu moi
 	public void restart() {
 		level = 1;
+		levelMaxGain = 1;
 		money = 0;
 		score = bonusScore = totalScore = 0;
 		power = 3;
@@ -72,6 +78,7 @@ public class SaveData {
 			money = Integer.parseInt(in.readLine());
 			totalScore = Integer.parseInt(in.readLine());
 			level = Integer.parseInt(in.readLine());
+			levelMaxGain = Integer.parseInt(in.readLine());
 			power = Integer.parseInt(in.readLine());
 
 			for (int i = 0; i < stars.length; i++) {
@@ -98,6 +105,7 @@ public class SaveData {
 			out.write(Integer.toString(money) + "\n");
 			out.write(Integer.toString(totalScore) + "\n");
 			out.write(Integer.toString(level) + "\n");
+			out.write(Integer.toString(levelMaxGain) + "\n");
 			out.write(Integer.toString(power) + "\n");
 
 			for (int i = 0; i < stars.length; i++) {
@@ -152,6 +160,14 @@ public class SaveData {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public int getLevelMaxGain() {
+		return levelMaxGain;
+	}
+
+	public void setLevelMaxGain(int levelMaxGain) {
+		this.levelMaxGain = levelMaxGain;
 	}
 
 	public int getPower() {
