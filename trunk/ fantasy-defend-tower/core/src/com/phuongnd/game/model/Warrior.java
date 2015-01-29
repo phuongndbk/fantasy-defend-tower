@@ -14,11 +14,13 @@ import com.phuongnd.game.controller.World;
 public class Warrior extends BaseUnit {
 
 	private float time_to_attack;
+	private float time_live;
 
 	private int path = 1;
 	private int index = 0;
 	private ArrayList<Piece> paths;
 	public Vector2 destination;
+	public Vector2 temp;
 	public Vector2 direction;
 	public Vector2 start;
 	private boolean isMove;
@@ -46,6 +48,7 @@ public class Warrior extends BaseUnit {
 
 		paths = new ArrayList<Piece>();
 		destination = new Vector2();
+		temp = new Vector2();
 		direction = new Vector2();
 		index = start;
 		this.start = new Vector2(getPosition().x, getPosition().y);
@@ -188,8 +191,14 @@ public class Warrior extends BaseUnit {
 
 		if (isSkill) {
 			skills.setActive(true);
-			if (skills.getId() == Constant.SKILL_1_ID)
+			if (skills.getId() == Constant.SKILL_1_ID) {
 				initAnimation(true);
+				setSkill_affected(SKILL_AFFECTED_STATE.NINJA);
+			}
+
+			if (skills.getId() == Constant.SKILL_6_ID) {
+				setSkill_affected(SKILL_AFFECTED_STATE.MOON);
+			}
 		}
 
 		setOriginalAttackSpeed(getOriginalAttackSpeed());
@@ -283,13 +292,17 @@ public class Warrior extends BaseUnit {
 	public void update(World world, float delta) {
 		// TODO Auto-generated method stub
 		time_to_attack += delta;
+		time_live += delta;
+		if (time_live >= 10) {
+			setState(STATE.DEAD);
+		}
 		if (getState() == STATE.ACTIVE) {
-			move(delta);
+			move(world, delta);
 		}
 		checkSkillAffect(world, delta);
 	}
 
-	public void move(float delta) {
+	public void move(World world, float delta) {
 		// if (index > 0) {
 		// destination = paths.get(index - 1).getPosition();
 		// if (!check(Ulti.convertPositionWorld(destination))) {
@@ -456,7 +469,34 @@ public class Warrior extends BaseUnit {
 			if (!check(destination)) {
 				setPosition(getPosition().x + direction.x * getSpeed() * delta,
 						getPosition().y + direction.y * getSpeed() * delta);
+			} else {
+				for (Enemy enemy : world.activeEnemy) {
+					float distance = (float) Math.sqrt(Math.pow(
+							enemy.getPosition().x - getPosition().x, 2)
+							+ Math.pow(enemy.getPosition().y - getPosition().y,
+									2));
+					if (distance <= 120) {
+						temp.x = enemy.getPosition().x;
+						temp.y = enemy.getPosition().y;
+						break;
+					} else {
+						temp.x = 0;
+						temp.y = 0;
+						continue;
+					}
+				}
+			}
+		}
 
+		if (temp.x != 0 && temp.y != 0) {
+			if (!check(temp)) {
+				moveTo(getPosition(), temp);
+				setPosition(getPosition().x + direction.x * getSpeed() * delta,
+						getPosition().y + direction.y * getSpeed() * delta);
+			} else {
+				temp.x = 0;
+				temp.y = 0;
+				moveTo(getPosition(), destination);
 			}
 		}
 
@@ -518,6 +558,23 @@ public class Warrior extends BaseUnit {
 				direction.y = -direction.y;
 			}
 		}
+
+		if (dx > 0 && dy == 0)
+			setMove_state(MOVE_STATE.RIGHT);
+		if (dx < 0 && dy == 0)
+			setMove_state(MOVE_STATE.LEFT);
+		if (dx == 0 && dy > 0)
+			setMove_state(MOVE_STATE.UP);
+		if (dx == 0 && dy < 0)
+			setMove_state(MOVE_STATE.DOWN);
+		if (dx > 0 && dy > 0)
+			setMove_state(MOVE_STATE.UP_RIGHT);
+		if (dx > 0 && dy < 0)
+			setMove_state(MOVE_STATE.DOWN_RIGHT);
+		if (dx < 0 && dy > 0)
+			setMove_state(MOVE_STATE.UP_LEFT);
+		if (dx < 0 && dy < 0)
+			setMove_state(MOVE_STATE.DOWN_LEFT);
 	}
 
 	public boolean checkPosAround(Vector2 start, Vector2 destination) {
@@ -589,20 +646,22 @@ public class Warrior extends BaseUnit {
 				setState(STATE.ACTIVE);
 			}
 		}
+		Ulti.checkOpposite(unit, this);
 	}
 
 	public void attack(BaseUnit unit, World world) {
 		if (time_to_attack >= 1.0f / getAttack_speed()) {
 			if (!skills.isActive()) {
-				world.addNewBullet(1, new Vector2(getPosition().x,
-						getPosition().y), 4, unit);
+				world.addNewBullet(1, new Vector2(getPosition().x + getWidth2()
+						/ 2, getPosition().y + getHeight2() / 2), 4, unit);
 			} else {
-				world.addNewBullet(1, new Vector2(getPosition().x,
-						getPosition().y), 4, unit);
+				world.addNewBullet(1, new Vector2(getPosition().x + getWidth2()
+						/ 2, getPosition().y + getHeight2() / 2), 4, unit);
 				skills.active(unit);
 			}
 			time_to_attack = 0;
 		}
+		Ulti.checkOpposite(unit, this);
 	}
 
 	public void checkSkillAffect(World world, float delta) {
@@ -661,6 +720,14 @@ public class Warrior extends BaseUnit {
 		return skills;
 	}
 
+	public float getTime_live() {
+		return time_live;
+	}
+
+	public void setTime_live(float time_live) {
+		this.time_live = time_live;
+	}
+
 	public int getOriginalDamage() {
 		return originalDamage;
 	}
@@ -697,6 +764,7 @@ public class Warrior extends BaseUnit {
 		setState(STATE.DEAD);
 		setPosition(0, 0);
 		time_to_attack = 0;
+		time_live = 0;
 		index = 0;
 		isMove = false;
 		isBreak = false;

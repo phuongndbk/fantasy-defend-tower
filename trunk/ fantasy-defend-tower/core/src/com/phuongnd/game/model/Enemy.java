@@ -13,6 +13,7 @@ import com.phuongnd.game.controller.World;
 public class Enemy extends BaseUnit {
 
 	private int life_cost;
+	private int coin;
 	private float distance;
 	private float time_to_attack;
 	private float time_to_teleport;
@@ -36,6 +37,8 @@ public class Enemy extends BaseUnit {
 	private boolean isVampire;
 	private boolean isStop;
 	private boolean isSpeedUp;
+	private boolean isHex;
+	private boolean isTeleport;
 
 	@Override
 	public void init(int id, Vector2 position, int numAnimation) {
@@ -69,7 +72,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_1_SKILL);
 			setAttack_speed(Constant.ENEMY_1_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_1_LIFE_COST);
-			setSkills(new Skill(Constant.SKILL_8_ID));
+			setCoin(Constant.ENEMY_1_COIN);
 			break;
 		case 2:
 			setName(Constant.ENEMY_2_NAME);
@@ -83,7 +86,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_2_SKILL);
 			setAttack_speed(Constant.ENEMY_2_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_2_LIFE_COST);
-			setSkills(new Skill(Constant.SKILL_8_ID));
+			setCoin(Constant.ENEMY_2_COIN);
 			break;
 		case 3:
 			setName(Constant.ENEMY_3_NAME);
@@ -97,7 +100,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_3_SKILL);
 			setAttack_speed(Constant.ENEMY_3_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_3_LIFE_COST);
-			setSkills(new Skill(Constant.SKILL_8_ID));
+			setCoin(Constant.ENEMY_3_COIN);
 			break;
 		case 4:
 			setName(Constant.ENEMY_4_NAME);
@@ -111,7 +114,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_4_SKILL);
 			setAttack_speed(Constant.ENEMY_4_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_4_LIFE_COST);
-			setSkills(new Skill(Constant.SKILL_9_ID));
+			setCoin(Constant.ENEMY_4_COIN);
 			break;
 		case 5:
 			setName(Constant.ENEMY_5_NAME);
@@ -125,6 +128,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_5_SKILL);
 			setAttack_speed(Constant.ENEMY_5_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_5_LIFE_COST);
+			setCoin(Constant.ENEMY_5_COIN);
 			break;
 		case 6:
 			setName(Constant.ENEMY_6_NAME);
@@ -138,6 +142,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_6_SKILL);
 			setAttack_speed(Constant.ENEMY_6_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_6_LIFE_COST);
+			setCoin(Constant.ENEMY_6_COIN);
 			break;
 		case 7:
 			setName(Constant.ENEMY_7_NAME);
@@ -151,6 +156,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_7_SKILL);
 			setAttack_speed(Constant.ENEMY_7_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_7_LIFE_COST);
+			setCoin(Constant.ENEMY_7_COIN);
 			break;
 		case 8:
 			setName(Constant.ENEMY_8_NAME);
@@ -164,6 +170,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_8_SKILL);
 			setAttack_speed(Constant.ENEMY_8_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_8_LIFE_COST);
+			setCoin(Constant.ENEMY_8_COIN);
 			break;
 		case 9:
 			setName(Constant.ENEMY_9_NAME);
@@ -177,6 +184,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_9_SKILL);
 			setAttack_speed(Constant.ENEMY_9_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_9_LIFE_COST);
+			setCoin(Constant.ENEMY_9_COIN);
 			break;
 		case 10:
 			setName(Constant.ENEMY_10_NAME);
@@ -190,6 +198,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_10_SKILL);
 			setAttack_speed(Constant.ENEMY_10_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_10_LIFE_COST);
+			setCoin(Constant.ENEMY_10_COIN);
 			break;
 		case 11:
 			setName(Constant.ENEMY_11_NAME);
@@ -203,6 +212,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_11_SKILL);
 			setAttack_speed(Constant.ENEMY_11_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_11_LIFE_COST);
+			setCoin(Constant.ENEMY_11_COIN);
 			break;
 		case 12:
 			setName(Constant.ENEMY_12_NAME);
@@ -216,6 +226,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_12_SKILL);
 			setAttack_speed(Constant.ENEMY_12_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_12_LIFE_COST);
+			setCoin(Constant.ENEMY_12_COIN);
 			break;
 		case 13:
 			setName(Constant.ENEMY_13_NAME);
@@ -229,6 +240,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_13_SKILL);
 			setAttack_speed(Constant.ENEMY_13_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_13_LIFE_COST);
+			setCoin(Constant.ENEMY_13_COIN);
 			break;
 		case 14:
 			setName(Constant.ENEMY_14_NAME);
@@ -242,6 +254,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_14_SKILL);
 			setAttack_speed(Constant.ENEMY_14_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_14_LIFE_COST);
+			setCoin(Constant.ENEMY_14_COIN);
 			break;
 		case 15:
 			setName(Constant.ENEMY_15_NAME);
@@ -255,6 +268,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_15_SKILL);
 			setAttack_speed(Constant.ENEMY_15_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_15_LIFE_COST);
+			setCoin(Constant.ENEMY_15_COIN);
 			break;
 		case 16:
 			setName(Constant.ENEMY_16_NAME);
@@ -268,6 +282,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_16_SKILL);
 			setAttack_speed(Constant.ENEMY_16_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_16_LIFE_COST);
+			setCoin(Constant.ENEMY_16_COIN);
 			break;
 		case 17:
 			setName(Constant.ENEMY_17_NAME);
@@ -281,6 +296,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_17_SKILL);
 			setAttack_speed(Constant.ENEMY_17_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_17_LIFE_COST);
+			setCoin(Constant.ENEMY_17_COIN);
 			break;
 		case 18:
 			setName(Constant.ENEMY_18_NAME);
@@ -294,6 +310,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_18_SKILL);
 			setAttack_speed(Constant.ENEMY_18_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_18_LIFE_COST);
+			setCoin(Constant.ENEMY_18_COIN);
 			break;
 		case 19:
 			setName(Constant.ENEMY_19_NAME);
@@ -307,6 +324,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_19_SKILL);
 			setAttack_speed(Constant.ENEMY_19_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_19_LIFE_COST);
+			setCoin(Constant.ENEMY_19_COIN);
 			break;
 		case 20:
 			setName(Constant.ENEMY_20_NAME);
@@ -320,6 +338,7 @@ public class Enemy extends BaseUnit {
 			setSkill(Constant.ENEMY_20_SKILL);
 			setAttack_speed(Constant.ENEMY_20_ATTACK_SPEED);
 			setLife_cost(Constant.ENEMY_20_LIFE_COST);
+			setCoin(Constant.ENEMY_20_COIN);
 			break;
 
 		default:
@@ -347,118 +366,118 @@ public class Enemy extends BaseUnit {
 				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
 				break;
 			case 2:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy2_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy2_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy2_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy2_Animation_Right, 3);
 				break;
 			case 3:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy3_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy3_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy3_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy3_Animation_Right, 3);
 				break;
 			case 4:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy4_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy4_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy4_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy4_Animation_Right, 3);
 				break;
 			case 5:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy5_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy5_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy5_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy5_Animation_Right, 3);
 				break;
 			case 6:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy6_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy6_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy6_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy6_Animation_Right, 3);
 				break;
 			case 7:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy7_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy7_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy7_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy7_Animation_Right, 3);
 				break;
 			case 8:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy8_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy8_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy8_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy8_Animation_Right, 3);
 				break;
 			case 9:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy9_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy9_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy9_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy9_Animation_Right, 3);
 				break;
 			case 10:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy10_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy10_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy10_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy10_Animation_Right, 3);
 				break;
 			case 11:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy11_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy11_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy11_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy11_Animation_Right, 3);
 				break;
 			case 12:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy12_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy12_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy12_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy12_Animation_Right, 3);
 				break;
 			case 13:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy13_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy13_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy13_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy13_Animation_Right, 3);
 				break;
 			case 14:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy14_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy14_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy14_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy14_Animation_Right, 3);
 				break;
 			case 15:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy15_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy15_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy15_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy15_Animation_Right, 3);
 				break;
 			case 16:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy16_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy16_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy16_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy16_Animation_Right, 3);
 				break;
 			case 17:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy17_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy17_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy17_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy17_Animation_Right, 3);
 				break;
 			case 18:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy18_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy18_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy18_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy18_Animation_Right, 3);
 				break;
 			case 19:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy19_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy19_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy19_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy19_Animation_Right, 3);
 				break;
 			case 20:
-				setAnimation(Assets.shared().enemy1_Animation_Up, 0);
-				setAnimation(Assets.shared().enemy1_Animation_Down, 1);
-				setAnimation(Assets.shared().enemy1_Animation_Left, 2);
-				setAnimation(Assets.shared().enemy1_Animation_Right, 3);
+				setAnimation(Assets.shared().enemy20_Animation_Up, 0);
+				setAnimation(Assets.shared().enemy20_Animation_Down, 1);
+				setAnimation(Assets.shared().enemy20_Animation_Left, 2);
+				setAnimation(Assets.shared().enemy20_Animation_Right, 3);
 				break;
 
 			default:
@@ -633,8 +652,8 @@ public class Enemy extends BaseUnit {
 	public void attack(BaseUnit unit, World world) {
 		if (time_to_attack >= getAttack_speed()) {
 			if (getDamage() > 0) {
-				world.addNewBullet(2, new Vector2(getPosition().x,
-						getPosition().y), 4, unit);
+				world.addNewBullet(2, new Vector2(getPosition().x + getWidth2()
+						/ 2, getPosition().y + getHeight2() / 2), 4, unit);
 			}
 			time_to_attack = 0;
 		}
@@ -1007,12 +1026,14 @@ public class Enemy extends BaseUnit {
 			break;
 		case TELEPORT:
 			time_to_teleport += delta;
+			isTeleport = true;
 			if (time_to_teleport > 1f) {
 				time_to_teleport = 0;
 				index = 0;
 				setPosition(Ulti.convertPositionWorld(getPaths().get(0)
 						.getPosition()));
 				setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
+				isTeleport = false;
 			}
 			break;
 		case HEX:
@@ -1020,9 +1041,11 @@ public class Enemy extends BaseUnit {
 			if (time_to_hex >= 2f) {
 				if (time_to_hex <= 5f) {
 					setDamage(0);
+					isHex = true;
 				} else {
 					setDamage(originalDamage);
 					time_to_hex = 0;
+					isHex = false;
 					setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
 				}
 			}
@@ -1104,6 +1127,14 @@ public class Enemy extends BaseUnit {
 		this.life_cost = life_cost;
 	}
 
+	public int getCoin() {
+		return coin;
+	}
+
+	public void setCoin(int coin) {
+		this.coin = coin;
+	}
+
 	public float getDistance() {
 		return distance;
 	}
@@ -1136,6 +1167,26 @@ public class Enemy extends BaseUnit {
 		return skills;
 	}
 
+	public boolean isSpeedUp() {
+		return isSpeedUp;
+	}
+
+	public boolean isVampire() {
+		return isVampire;
+	}
+
+	public boolean isStop() {
+		return isStop;
+	}
+
+	public boolean isHex() {
+		return isHex;
+	}
+
+	public boolean isTeleport() {
+		return isTeleport;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -1159,6 +1210,8 @@ public class Enemy extends BaseUnit {
 		isVampire = false;
 		isStop = false;
 		isSpeedUp = false;
+		isHex = false;
+		isTeleport = false;
 		setSkill_affected(SKILL_AFFECTED_STATE.NORMAL);
 		skills = null;
 	}

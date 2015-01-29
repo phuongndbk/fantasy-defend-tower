@@ -340,6 +340,8 @@ public class World {
 			enemy = activeEnemy.get(i);
 			enemy.update(this, deltaTime);
 			if (enemy.getState() == com.phuongnd.game.model.BaseUnit.STATE.DEAD) {
+				if (enemy.getHp() <= 0)
+					coin += enemy.getCoin();
 				activeEnemy.removeIndex(i);
 				enemyPool.free(enemy);
 				numberEnemies--;
